@@ -19,9 +19,10 @@ function AddFeedback()
     const [bookingIdValidation,setBookingIdValidation]=useState()
     const [packageId,setPackageId]=useState()
     const [packageIdValidation,setPackageIdValidation]=useState()
-    return (<div>
-        <Paper elevation={4} style={{marginTop:"30px",width:"566px", marginLeft:"400px"}}>
-        <div style={{marginLeft:"150px"}}>
+    return (<div class="container text-center">
+    <div class="row align-items-start ">
+    <div class="col-5 " style={{border: '2px solid black'}} >
+    <table class="table  table-bordered  ">
             <h1>Add Feedback</h1>
 
             Enter Session Key<br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
@@ -82,10 +83,10 @@ var Feedback={
                 }
                 else if(rating.length<10)
                 {
-                    setRatingValidation(" Give Rating less then 10")
+                    setRatingValidation(" ")
                 }else
                 {
-                    setRatingValidation(" ")
+                    setRatingValidation(" Give Rating less then 10")
                 }
 
                 
@@ -111,35 +112,49 @@ var Feedback={
 
             }}> Submit</Button> 
 
-            <br/>
-            <br/>
-            <Card variant="outlined">
-            <div>
-            <h4>Feedback ID</h4>
-            {
-              response!=undefined?response.feedbackId:" "
-            }
-           <br/>
-           <h4>Feedback </h4>
-           {
-              response!=undefined?response.feedback:" "
-            }
-           <br/>
-           <h4>Feedback Rating</h4>
-           
-             {
-              response!=undefined?response.rating:" "
-            }
-           <br/>
-           <h4>Feedback SubmitDate</h4>
-           {
-              response!=undefined?response.submitDate:" "
-            }
-            </div> </Card>
-            
-        </div>
-        </Paper>
+</table>
+    </div>
+     <br/>
+   &nbsp; <div class="col-6" style={{border: '2px solid black'}}>
+    <br/>
+    <table class="table  table-bordered">
         
-    </div>);
+  <thead>
+    <tr>
+   
+      <th>Feedback ID</th>
+      <th>Feedback</th>
+      <th>Feedback Rating</th>
+      <th>Feedback SubmitDate</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+            <tr>
+          <td>{  response!=undefined?response.feedbackId:" "}</td>
+          <td>{   response!=undefined?response.feedback:" "}</td>
+          {/* <td>{ response!=undefined?response.busNumber:"   "}</td> */}
+          <td> {  response!=undefined?response.rating:" "} </td>
+          <td>{ response!=undefined?response.submitDate:" "}</td>
+          
+        </tr>
+       {/* (
+      <tr>
+        <td colSpan="2">No value found</td>
+      </tr>
+    ) */}
+  </tbody>
+</table>
+
+    </div>
+
+
+</div>
+    </div> 
+
+
+
+
+);
 }
 export default AddFeedback

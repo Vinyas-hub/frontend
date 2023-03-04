@@ -27,11 +27,7 @@ function LeftSideMenu(){
                     {/* <img src={storelist} width="25px" height="25px"/>  */}
                 &nbsp; MakePayment</li>
             </Link>
-            <Link to="/user/dashboard/viewRoute" className="nav-link">
-                <li class="list-group-item">
-                    {/* <img src={payment} width="25px" height="25px"/> */}
-                 &nbsp; view Route</li>
-            </Link>
+            
             <Link to="/user/dashboard/viewPackage" className="nav-link">
                 <li class="list-group-item">
                     {/* <img src={payment} width="25px" height="25px"/> */}

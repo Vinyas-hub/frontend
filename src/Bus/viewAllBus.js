@@ -12,12 +12,14 @@ function ViewAllBus()
     // const [busIdValidation,setBusIdValidation]=useState()
     
 
-    return (<div>
-        <Paper elevation={4} style={{marginTop:"30px",width:"566px", marginLeft:"400px"}}>
-        <div style={{marginLeft:"150px"}}>
-            <h1>Bus view</h1>
-
-            Enter Session Key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
+    return (<div class="container text-center">
+    <div class="row align-items-start ">
+    <div class="col-5 " style={{border: '1px solid black'}} >
+    <table class="table  table-bordered">
+        <br/>
+    <h1>View All Bus</h1>
+                <br/>
+                Enter Session Key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{session_keyValidation}</p>
 
         {/* Enter BusId <br/><Input type='text'  onChange={(e)=>{setBusId(e.target.value)}} /> <br/>
@@ -63,36 +65,47 @@ var Booking={
 
                
             }}> Submit</Button> 
-
-<br/>
-            <br/>
-            
-            <div>
-            
-            
-             {
-                response!=undefined?response.busNumber:"   "
-            }
-            <br/>
-             {
-                response!=undefined?response.busType:"   "
-            }
-            <br/>
-             {
-                response!=undefined?response.capacity:"   "
-            }
-             <br/>
-            {
-                response!=undefined?response.availabeSeat:"   "
-            }
-           
-
-            </div> <br/>
-            
-            
-        </div>
-        </Paper>
+            </table>
+    </div>
+     <br/>
+   &nbsp; <div class="col-6" style={{border: '1px solid black'}}>
+    <br/>
+    <table class="table  table-bordered">
         
-    </div>);
+  <thead>
+    <tr>
+    <th>Bus Id</th>
+      <th>Bus Type</th>
+      <th>Bus Number</th>
+      <th>Capacity</th>
+      <th>Availabe Seat</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {response !== undefined ? (
+      response.map((e) => (
+        <tr key={e.busId}>
+             <td>{e.busId}</td>
+          <td>{e.busType}</td>
+          <td>{e.busNumber}</td>
+          <td>{e.capacity}</td>
+          <td>{e.availabeSeat}</td>
+        </tr>
+      ))
+      ) : (
+        <tr>
+          <td colSpan="2">No value found</td>
+        </tr>
+      )}
+    </tbody>
+  </table>
+
+    </div>
+
+
+</div>
+    </div>
+            );
 }
 export default ViewAllBus

@@ -29,7 +29,7 @@ var Logout={
     adminID:adminID,
     userType:userType
         }
-        let url=' http://localhost:8090/user/logout?userId=9&userType=ADMIN'
+        let url=' http://localhost:8090/user/logout'
         
       let headers={
         'Content-Type':'application/json'

@@ -124,7 +124,7 @@ var Booking={
 
             }}> Submit</Button> 
             <br/>
-            <br/>
+            {/* <br/>
             <Card variant="outlined">
             <div>
             
@@ -140,7 +140,7 @@ var Booking={
                 response!=undefined?response.bookingTitle:"   "
             }
             </div>
-            </Card>
+            </Card> */}
         </div>
         </Paper>
         

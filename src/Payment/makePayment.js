@@ -1,4 +1,4 @@
-import { Input,Button,Paper } from "@mui/material";
+import { Input,Button,Paper,Card } from "@mui/material";
 import { useContext, useState } from "react";
 import { ProfileContext } from "../context/profilecontext";
 import axios from "axios";  
@@ -6,6 +6,7 @@ import {  Payment } from "@mui/icons-material";
 
 function MakePayment()
 { 
+    const [response,setResponse]=useState()
     const [session_key,setSession_key]=useState()
     const [session_keyValidation,setSession_keyValidation]=useState()
     const [bookingId,setBookingId]=useState()
@@ -15,10 +16,12 @@ function MakePayment()
     const [pin,setPin]=useState()
     const [pinValidation,setPinValidation]=useState()
     
-    return (<div>
-        <Paper elevation={4} style={{marginTop:"30px",width:"566px", marginLeft:"400px"}}>
-        <div style={{marginLeft:"150px"}}>
-            <h1>make payment</h1>
+    return (<div class="container text-center">
+    <div class="row align-items-start ">
+    <div class="col-4" style={{border: '2px solid black'}} >
+    <table class="table  table-bordered  ">
+        <br/>
+            <h4>Make payment</h4>
 
             Enter Session key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{session_keyValidation}</p>
@@ -50,6 +53,8 @@ var Payment={
     }
     axios.post(url,Payment,{headers}).then((e)=>{
          console.log(e.data)
+         setResponse(e.data)  
+
         }).catch((e)=>{
              console.log(e)
             })
@@ -73,10 +78,7 @@ var Payment={
     {
         setUpi_IdValidation("upi id is blank")
     }
-    else if(upi_Id.length<10 )
-    {
-        setUpi_IdValidation(" ")
-    }else
+    else
     {
         setUpi_IdValidation(" ")
     }
@@ -92,9 +94,62 @@ var Payment={
     }
 
 }}> Submit</Button> 
-</div>
-</Paper>
+<br/>
+<br/>
+<br/>
+</table>
+    </div>
+     <br/>
+   &nbsp; <div class="col-10" style={{border: '2px solid black'}}>
+    <br/>
+    <table class="table  table-bordered">
+        
+  <thead>
+    <tr>
+   
+      
+      <th>Booking Id</th>
+      <th>Booking Date</th>
+      <th>Booking Status</th>
+      <th>Booking description</th>
+      <th>Number Of Persons</th>
+      <th>Total Cost</th>
+      <th>Payment Amount</th>
+      <th>Payment Information</th>
+      <th>Payment Status</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+            <tr>
+          <td>{   response!=undefined?response.booking.bookingId:"   "}</td>
+          <td>{    response!=undefined?response.booking.bookingDate:"   "}</td>
+          <td>{  response!=undefined?response.booking.bookingStatus:"   "}</td>
+          <td>{ response!=undefined?response.booking.bookingTitle:"   "}</td>
+          <td>{   response!=undefined?response.booking.description:"   "}</td>
+          <td>{     response!=undefined?response.booking.noOfPersons:"   "}</td>
+          <td>{     response!=undefined?response.booking.totalCost:"   "}</td>
+          <td>{    response!=undefined?response.paymentAmount:"   "}</td>
+          <td>{    response!=undefined?response.paymentInfo:"   "}</td>
+          <td>{     response!=undefined?response.paymentStatus:"   "}</td>
+          
+        </tr>
+       {/* (
+      <tr>
+        <td colSpan="2">No value found</td>
+      </tr>
+    ) */}
+  </tbody>
+</table>
 
-</div>);
+    </div>
+
+
+</div>
+
+    </div> 
+
+
+);
 }
 export default MakePayment

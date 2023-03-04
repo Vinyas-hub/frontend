@@ -11,7 +11,7 @@ import Login from './Authentication/login';
 import AdminRegistration from './auth/adminReg';
 import PackageAdd from './Admin/addPackage';
 import AddReport from './Admin/addReport';
-import RouteReg from './Route/addroute';
+
 import DeleteHotel from './hotel/deleteHotel';
 import ViewAdmin from './Admin/viewAdmin';
 import UpdateAdmin from './Admin/updateAdmin';
@@ -26,6 +26,7 @@ import HomeImg from './components/HomeImg';
 import Logout from './Authentication/logout';
 import ViewBooking from './Booking/viewBooking';
 import ViewBus from './Bus/viewBus';
+import ViewAllBus from './Bus/viewAllBus';
 import AddFeedback from './Feedback/addFeedback';
 import ViewFeedback from './Admin/viewFeedback';
 import MakePayment from './Payment/makePayment';
@@ -36,6 +37,7 @@ import ViewAllPackage from './package/viewPackage';
 import UserLogin from './Authentication/userlogin';
 import AddCustomer from './Customer/addCustomer';
 import AddHotel from './Admin/addHotel';
+import RouteReg from './Route/addroute';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -59,9 +61,11 @@ root.render(
           <Route path="addReport" element={<AddReport/>} />
           <Route path="updateAdmin" element={<UpdateAdmin/>} />
           <Route path="viewAdmin" element={<ViewAdmin/>} />
-          {/* <Route path="deleteAdmin" element={<DeleteAdmin/>} />
-           <Route path="deleteCustomer" element={<DeleteCustomer/>} />  */}
+           <Route path="viewAllBus" element={<ViewAllBus/>} />
+         {/*  <Route path="deleteCustomer" element={<DeleteCustomer/>} />  */}
            <Route path="viewHotel" element={<ViewHotel/>} /> 
+           <Route path="addroute" element={<RouteReg />} /> 
+           <Route path="viewRoute" element={<ViewRoute />} />      {/*    //Added at 1pm */}
            <Route path="logout" element={<Logout/>} /> 
         </Route>
 
@@ -72,8 +76,9 @@ root.render(
           <Route path="addFeedback" element={<AddFeedback />} />
           <Route path="viewFeedback" element={<ViewFeedback />} />
           <Route path="makePayment" element={<MakePayment />} />
-          <Route path="viewRoute" element={<ViewRoute />} />
+          
           <Route path="viewPackage" element={<ViewAllPackage />} />
+          
           </Route>
     </Routes>
     </BrowserRouter>

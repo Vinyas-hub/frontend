@@ -19,28 +19,32 @@ function UpdateAdmin()
     const [mobile,setMobile]=useState()
     const [mobileValidation,setMobileValidation]=useState()
     
-    return (<div>
-        <Paper elevation={8} style={{marginTop:"30px",width:"566px", marginLeft:"400px"}}>
-        <div style={{marginLeft:"150px"}}>
-            <h1>Admin update</h1>
+    return (<div class="container text-center">
+    <div class="row align-items-start ">
+    <div class="col-5 " style={{border: '2px solid black'}} >
+    <table class="table  table-bordered">
+        <br/>
+            <h2>Admin Update</h2>
+            <br/>
+            <br/>
             Enter Session key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{session_keyValidation}</p>
 
-        Enter Admin ID <br/><Input type='text' onChange={(e)=>{setAdminID(e.target.value)}}  /> <br/>
+        Enter Your Admin ID <br/><Input type='text' onChange={(e)=>{setAdminID(e.target.value)}}  /> <br/>
         <p style={{color:"red"}}>{adminIDValidation}</p>
 
 
-        Enter Admin Name <br/><Input type='text' onChange={(e)=>{setAdminName(e.target.value)}}  /> <br/>
+        Enter Your Admin Name <br/><Input type='text' onChange={(e)=>{setAdminName(e.target.value)}}  /> <br/>
         <p style={{color:"red"}}>{adminNameValidation}</p> 
         
 
-        Enter Email <br/><Input type='text' onChange={(e)=>{setEmail(e.target.value)}}    /> <br/>
+        Enter Your Email <br/><Input type='text' onChange={(e)=>{setEmail(e.target.value)}}    /> <br/>
         <p style={{color:"red"}}>{emailValidation}</p> 
 
-        Enter Password <br/><Input type='text' onChange={(e)=>{setPassword(e.target.value)}}    /><br/>
+        Enter Your Password <br/><Input type='text' onChange={(e)=>{setPassword(e.target.value)}}    /><br/>
         <p style={{color:"red"}}>{passwordValidation}</p>
 
-        Enter Mobile<br/><Input type='text' onChange={(e)=>{setMobile(e.target.value)}}   /> <br/>
+        Enter Your Mobile<br/><Input type='text' onChange={(e)=>{setMobile(e.target.value)}}   /> <br/>
         <p style={{color:"red"}}>{mobileValidation}</p>
        
         <Button style={{marginLeft:"50px"}} variant="outlined" onClick={()=>{
@@ -136,49 +140,51 @@ axios.put(url,Admin,{headers}).then((e)=>{
         }
     
     }}> Submit</Button> 
+     <br/>
+     <br/>
 
-<Card variant="outlined">
-            <div>
-            <h4>adminID</h4>
-            {
-                response!=undefined?response.adminID:"   "
-            }
-    
-             <br/>
-             <h4>adminName</h4>
-            {
-                response!=undefined?response.adminName:"   "
-            }
-    
-             <br/>
-             <h4>email</h4>
-            {
-                response!=undefined?response.email:"   "
-            }
-    
-             <br/>
-             <h4>password</h4>
-            {
-                response!=undefined?response.password:"   "
-            }
-    
-             <br/>
-             <h4>mobile</h4>
-            {
-                response!=undefined?response.mobile:"   "
-            }
-    
-             <br/>
-            
-            
-             
-            </div>
-            </Card>
-
-
+     </table>
     </div>
-    </Paper>
-    
-</div>);
+     <br/>
+   &nbsp; <div class="col-6" style={{border: '2px solid black'}}>
+    <br/>
+    <table class="table  table-bordered">
+        
+  <thead>
+    <tr>
+   
+      <th>Bus Id</th>
+      <th>Bus Type</th>
+      <th>Bus Number</th>
+      <th>Capacity</th>
+      <th>Availabe Seat</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+          <td>{  response!=undefined?response.adminID:"   "}</td>
+          <td>{ response!=undefined?response.adminName:"   "}</td>
+          <td>{  response!=undefined?response.email:"   "}</td>
+          <td>{response!=undefined?response.password:"   "}</td>
+          <td>{ response!=undefined?response.mobile:"   "}</td>
+        </tr>
+       {/* (
+      <tr>
+        <td colSpan="2">No value found</td>
+      </tr>
+    ) */}
+  </tbody>
+</table>
+
+</div>
+
+
+</div>
+    </div>
+
+
+
+);
 }
 export default UpdateAdmin

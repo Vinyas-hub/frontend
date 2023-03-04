@@ -12,10 +12,12 @@ function ViewAllPackage()
     // const [busIdValidation,setBusIdValidation]=useState()
     
 
-    return (<div>
-        <Paper elevation={4} style={{marginTop:"30px",width:"566px", marginLeft:"400px"}}>
-        <div style={{marginLeft:"150px"}}>
-            <h1>package view</h1>
+    return (
+       <div class="container text-center">
+    <div class="row align-items-start ">
+    <div class="col-5 " style={{border: '2px solid black'}} >
+    <table class="table  table-bordered  ">
+            <h1>View Package </h1>
 
             Enter Session Key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{session_keyValidation}</p>
@@ -63,9 +65,47 @@ var Package={
 
                
             }}> Submit</Button> 
+           </table>
+    </div>
+     <br/>
+   &nbsp; <div class="col-8" style={{border: '2px solid black'}}>
+    <br/>
+    <table class="table  table-bordered">
+        
+  <thead>
+    <tr>
+   
+      <th>Package Id</th>
+      <th>Package Name </th>
+      <th>Package Description</th>
+      <th>Package Rating</th>
+      <th>packageCost</th>
+      <th>Current Availability</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    {response !== undefined ? (
+      response.map((e) => (
+        <tr key={e.routeId}>
+             <td>{e.packageId}</td>
+          <td>{e.packageName}</td>
+          <td>{e.packageDescription}</td>
+          <td>{e.packageRating}</td>
+          <td>{e.packageCost}</td>
+          <td>{e.currentAvailability}</td>
+        </tr>
+      ))
+    ) : (
+      <tr>
+        <td colSpan="2">No value found</td>
+      </tr>
+    )}
+  </tbody>
+</table>
 
-<br/>
-<br/>
+
+{/* <br/>
             <Card variant="outlined">
             <div>
             
@@ -101,13 +141,10 @@ var Package={
 
             </div> <br/>
             
-            </Card>
-        </div>
-        </Paper>
-            
-            
+            </Card> */}
        
-        
-    </div>);
+  </div>  
+  </div>
+</div>);
 }
 export default ViewAllPackage

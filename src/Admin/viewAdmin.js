@@ -11,9 +11,13 @@ function ViewAdmin()
     // const [adminId,setAdminId]=useState()
     // const [adminIdValidation,setadminIdValidation]=useState()
     return (<div>
-        <Paper elevation={8} style={{marginTop:"30px",width:"766px", marginLeft:"200px"}}>
-        <div style={{marginLeft:"150px"}}>
-            <h1>Customer View</h1>
+        <div class="container text-center">
+    <div class="row align-items-start ">
+    <div class="col-5 " style={{border: '1px solid black'}} >
+    <table class="table  table-bordered">
+        <br/>
+            <h4>View Customer </h4>
+            <br/>
             Enter Session key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{session_keyValidation}</p>
         {/* Enter AdminId <br/><Input type='text'  onChange={(e)=>{setAdminId(e.target.value)}} /> <br/>
@@ -48,12 +52,16 @@ axios.get(url,Admin,{headers}).then((e)=>{
     //         setadminIdValidation(" ")
     //     }
     }}> Submit</Button> 
-
-<table>
+ </table>
+    </div>
+     <br/>
+   &nbsp; <div class="col-6" style={{border: '1px solid black'}}>
+    <br/>
+    <table class="table  table-bordered">
   <thead>
     <tr>
    
-      <th>customerName</th>
+      <th>CustomerName</th>
       <th>Address</th>
       <th>Email</th>
       <th>Mobile</th>
@@ -77,15 +85,16 @@ axios.get(url,Admin,{headers}).then((e)=>{
   </tbody>
 </table>
 
-
-             
-            
+</div>
 
 
+</div>
+    </div>     
 
 
-    </div>
-    </Paper>
+
+
+   
     
 </div>);
 }

@@ -5,6 +5,7 @@ import axios from "axios";
 
 function BusReg()
 {   
+    const [selectedOption, setSelectedOption] = useState('option1');
     const [response,setResponse]=useState()
     const [session_key,setSession_key]=useState()
     const [session_keyValidation,setSession_keyValidation]=useState()
@@ -19,27 +20,42 @@ function BusReg()
     const [availableSeat,setAvailableSeat]=useState()
     const [availableSeatValidation,setAvailableSeatValidation]=useState()
 
-    return (<div>
-        <Paper elevation={4} style={{marginTop:"30px",width:"566px", marginLeft:"400px"}}>
-        <div style={{marginLeft:"150px"}}>
-            <h1>BusAdd</h1>
+    const handleOptionChange = (event) => {
+        setSelectedOption(event.target.value);
+      }
 
-            Enter Session Key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
+    return (<div class="container text-center">
+    <div class="row align-items-start ">
+    <div class="col-5 " style={{border: '1px solid black'}} >
+    <table class="table  table-bordered">
+        <br/>
+    <h1>Add Bus</h1>
+    <br/>
+    Enter Session Key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{session_keyValidation}</p>
 
-        Enter Bus ID <br/><Input type='text'  onChange={(e)=>{setBusId(e.target.value)}} /> <br/>
-        <p style={{color:"red"}}>{busIdValidation}</p> 
+        {/* Enter Bus ID <br/><Input type='text'  onChange={(e)=>{setBusId(e.target.value)}} /> <br/>
+        <p style={{color:"red"}}>{busIdValidation}</p>  */}
 
-        Enter BusType<br/><Input type='text' onChange={(e)=>{setBusType(e.target.value)}}  /> <br/>
-        <p style={{color:"red"}}>{busTypeValidation}</p> 
+        <div>
+      <label htmlFor="dropdown"> Enter Bus Type </label>
+      <br/>
+      <br/>
+      <select id="BusType" value={selectedOption} onChange={handleOptionChange}>
+        <option value="NON_AC">NON AC</option>
+        <option value="SLEEPER_AC">SLEEPER AC</option>
+        <option value="SLEEPER_NON_AC"> SLEEPER NON AC</option>
+      </select>
+      <p style={{color:"green"}}>You selected: {selectedOption}</p>
+    </div>
 
-        Enter busNumber   <br/><Input type='text' onChange={(e)=>{setBusNumber(e.target.value)}}    /> <br/>
+        Enter Bus Number   <br/><Input type='text' onChange={(e)=>{setBusNumber(e.target.value)}}    /> <br/>
         <p style={{color:"red"}}>{busNumberValidation}</p> 
 
-        Enter capacity <br/><Input type='text' onChange={(e)=>{setCapacity(e.target.value)}}    /><br/>
+        Enter Capacity <br/><Input type='text' onChange={(e)=>{setCapacity(e.target.value)}}    /><br/>
         <p style={{color:"red"}}>{capacityValidation}</p>
 
-        Enter availableSeat<br/><Input type='text' onChange={(e)=>{setAvailableSeat(e.target.value)}}   /> <br/>
+        Enter Available Seat<br/><Input type='text' onChange={(e)=>{setAvailableSeat(e.target.value)}}   /> <br/>
         <p style={{color:"red"}}>{availableSeatValidation}</p>
 
         <Button style={{marginLeft:"50px"}} variant="outlined" onClick={()=>{
@@ -47,7 +63,7 @@ function BusReg()
 var Bus={
     session_key:session_key,
     busId:busId,
-    busType:busType,
+    busType:selectedOption,
     busNumber:busNumber,
     capacity:capacity,
     availabeSeat:availableSeat
@@ -80,14 +96,7 @@ var Bus={
                 }
 
 
-                if(busType==undefined)
-                {
-                    setBusTypeValidation("busType is blank")
-                }
-                else
-                {
-                    setBusTypeValidation(" ")
-                }
+            
                
                 if(busNumber==undefined)
                 {
@@ -120,36 +129,47 @@ var Bus={
                 }
 
             }}> Submit</Button> 
-            <br/>
-            <Card variant="outlined">
-            <div>
-                
-            <h4>Bus Type</h4>
-            {
-                response!=undefined?response.busType:"   "
-            }
-    
-             <br/>
-             <h4>Bus Number</h4>
-            {
-                response!=undefined?response.busNumber:"   "
-            }
-             <br/>
-             <h4>Capacity</h4>
-            {
-                response!=undefined?response.capacity:"   "
-            }
-              <br/>
-             <h4>AvailabeSeat</h4>
-            {
-                response!=undefined?response.availabeSeat:"   "
-            }
-            </div>
-            </Card>
-        </div>
-        </Paper>
+            </table>
+    </div>
+     <br/>
+   &nbsp; <div class="col-6" style={{border: '1px solid black'}}>
+    <br/>
+    <table class="table  table-bordered">
         
+  <thead>
+    <tr>
+   
+      <th>Bus ID</th>
+      <th>Bus Type</th>
+      <th>Bus Number</th>
+      <th>Capacity</th>
+      <th>Available Seat</th>
+    </tr>
+  </thead>
+  <tbody>
+            <tr>
+          <td>{ response!=undefined?response.busId:"   "}</td>
+          <td>{  response!=undefined?response.busType:"   "}</td>
+          <td>{ response!=undefined?response.busNumber:"   "}</td>
+          <td>{response!=undefined?response.capacity:"   "}</td>
+          <td>{response!=undefined?response.availabeSeat:"   "}</td>
+        </tr>
+       {/* (
+      <tr>
+        <td colSpan="2">No value found</td>
+      </tr>
+    ) */}
+  </tbody>
+</table>
+
+    </div>
+
+
+</div>
     </div>);
+                
+                
+            
 }
 export default BusReg
        

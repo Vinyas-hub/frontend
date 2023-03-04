@@ -12,15 +12,17 @@ function ViewBus()
     const [busIdValidation,setBusIdValidation]=useState()
     
 
-    return (<div>
-        <Paper elevation={4} style={{marginTop:"30px",width:"566px", marginLeft:"400px"}}>
-        <div style={{marginLeft:"150px"}}>
-            <h1>Bus view</h1>
-
-            Enter Session Key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
+    return (<div class="container text-center">
+    <div class="row align-items-start ">
+    <div class="col-5 " style={{border: '1px solid black'}} >
+    <table class="table  table-bordered">
+        <br/>
+    <h1>View Bus</h1>
+                <br/>
+                Enter Your Session Key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{session_keyValidation}</p>
 
-        Enter BusId <br/><Input type='text'  onChange={(e)=>{setBusId(e.target.value)}} /> <br/>
+        Enter Your BusId <br/><Input type='text'  onChange={(e)=>{setBusId(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{busIdValidation}</p> 
 
        
@@ -63,36 +65,46 @@ var Booking={
 
                
             }}> Submit</Button> 
-
-<br/>
-            <br/>
-            <Card variant="outlined">
-            <div>
-            
-            
-             {
-                response!=undefined?response.busNumber:"   "
-            }
-            <br/>
-             {
-                response!=undefined?response.busType:"   "
-            }
-            <br/>
-             {
-                response!=undefined?response.capacity:"   "
-            }
-             <br/>
-            {
-                response!=undefined?response.availabeSeat:"   "
-            }
-           
-
-            </div> <br/>
-            
-            </Card>
-        </div>
-        </Paper>
+          </table>
+    </div>
+     <br/>
+   &nbsp; <div class="col-6" style={{border: '1px solid black'}}>
+    <br/>
+    <table class="table  table-bordered">
         
-    </div>);
+  <thead>
+    <tr>
+   
+      <th>Bus Id</th>
+      <th>Bus Type</th>
+      <th>Bus Number</th>
+      <th>Capacity</th>
+      <th>Availabe Seat</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+          <td>{ response!=undefined?response.busId:"   "}</td>
+          <td>{  response!=undefined?response.busType:"   "}</td>
+          <td>{ response!=undefined?response.busNumber:"   "}</td>
+          <td>{response!=undefined?response.capacity:"   "}</td>
+          <td>{response!=undefined?response.availabeSeat:"   "}</td>
+        </tr>
+       {/* (
+      <tr>
+        <td colSpan="2">No value found</td>
+      </tr>
+    ) */}
+  </tbody>
+</table>
+
+</div>
+
+
+</div>
+    </div>
+                
+                );
 }
 export default ViewBus

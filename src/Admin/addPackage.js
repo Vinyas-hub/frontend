@@ -22,33 +22,38 @@ function PackageAdd()
     const [packageCostValidation,setPackageCostValidation]=useState()
     const [packageCapacity,setPackageCapacity]=useState()
     const [packageCapacityValidation,setPackageCapacityValidation]=useState()
-    return (<div>
-        <Paper elevation={4} style={{marginTop:"30px",width:"566px", marginLeft:"400px"}}>
-        <div style={{marginLeft:"150px"}}>
-            <h1>Package Add</h1>
+    return (
+        <div class="container text-center">
+    <div class="row align-items-start ">
+    <div class="col-5 " style={{border: '2px solid black'}} >
+    <table class="table  table-bordered">
+        <br/>
+            <h2> Add Package</h2>
+            <br/>
+            <br/>
 
-            Enter SessionId <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
+            Enter Session Id <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{session_keyValidation}</p>
 
-        Enter package name <br/><Input type='text'  onChange={(e)=>{setPackageName(e.target.value)}} /> <br/>
+        Enter Package Name <br/><Input type='text'  onChange={(e)=>{setPackageName(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{packageNameValidation}</p> 
 
-        Enter package packageDescription <br/><Input type='text' onChange={(e)=>{setPackageDescription(e.target.value)}}  /> <br/>
+        Enter Package Description <br/><Input type='text' onChange={(e)=>{setPackageDescription(e.target.value)}}  /> <br/>
         <p style={{color:"red"}}>{packageDescriptionValidation}</p> 
 
-        Enter routeId   <br/><Input type='text' onChange={(e)=>{setRouteId(e.target.value)}}    /> <br/>
+        Enter Route Id   <br/><Input type='text' onChange={(e)=>{setRouteId(e.target.value)}}    /> <br/>
         <p style={{color:"red"}}>{routeIdValidation}</p> 
 
-        Enter  hotel_Id <br/><Input type='text' onChange={(e)=>{setHotel_Id(e.target.value)}}    /><br/>
+        Enter  Hotel Id <br/><Input type='text' onChange={(e)=>{setHotel_Id(e.target.value)}}    /><br/>
         <p style={{color:"red"}}>{hotel_IdValidation}</p>
 
-        Enter  busId<br/><Input type='text' onChange={(e)=>{setBusId(e.target.value)}}   /> <br/>
+        Enter  Bus Id<br/><Input type='text' onChange={(e)=>{setBusId(e.target.value)}}   /> <br/>
         <p style={{color:"red"}}>{busIdValidation}</p>
 
-        Enter packageCost <br/><Input type='text' onChange={(e)=>{setPackageCost(e.target.value)}}   /> <br/>
+        Enter Package Cost <br/><Input type='text' onChange={(e)=>{setPackageCost(e.target.value)}}   /> <br/>
         <p style={{color:"red"}}>{packageCostValidation}</p>
 
-        Enter packageCapacity<br/><Input type='text' onChange={(e)=>{setPackageCapacity(e.target.value)}}   /> <br/>
+        Enter Package Capacity<br/><Input type='text' onChange={(e)=>{setPackageCapacity(e.target.value)}}   /> <br/>
         <p style={{color:"red"}}>{packageCapacityValidation}</p>
 
     
@@ -158,51 +163,46 @@ var Package={
                 }
 
             }}> Submit</Button> 
-            <Card variant="outlined">
-            <div>
-                
-             <h4>package Name</h4>
-            {
-                response!=undefined?response.packageName:"   "
-            }
-    
-             <br/>
-             <h4>package Description</h4>
-            {
-                response!=undefined?response.packageDescription:"   "
-            }
-    
-             <br/>
-             <h4>packageId</h4>
-            {
-                response!=undefined?response.packageId:"   "
-            }
-    
-             <br/>
-             <h4>packageRating</h4>
-            {
-                response!=undefined?response.packageRating:"   "
-            }
-    
-             <br/>
-             <h4>packageCost</h4>
-            {
-                response!=undefined?response.packageCost:"   "
-            }
-    
-             <br/>
-             <h4>Current Availability</h4>
-            {
-                response!=undefined?response.currentAvailability:"   "
-            }
-    
-             <br/>
-             
-            </div>
-            </Card>
-        </div>
-        </Paper>
+            <br/>
+            </table>
+    </div>
+     <br/>
+   &nbsp; <div class="col-6" style={{border: '2px solid black'}}>
+    <br/>
+    <table class="table  table-bordered">
         
-    </div>);
+  <thead>
+    <tr>
+   
+      <th>Package Name</th>
+      <th>Package Description</th>
+      <th>Package Id</th>
+      <th>Package Rating</th>
+      <th>Package Cost</th>
+      <th>Current Availability</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+          <td>{response!=undefined?response.packageName:"   "}</td>
+          <td>{  response!=undefined?response.packageDescription:"   "}</td>
+          <td>{  response!=undefined?response.packageId:"   "}</td>
+          <td>{ response!=undefined?response.packageRating:"   "}</td>
+          <td>{  response!=undefined?response.packageCost:"   "}</td>
+          <td>{ response!=undefined?response.currentAvailability:"   "}</td>
+        </tr>
+       {/* (
+      <tr>
+        <td colSpan="2">No value found</td>
+      </tr>
+    ) */}
+  </tbody>
+</table>
+
+</div>
+</div>
+</div>
+);
 }
 export default PackageAdd

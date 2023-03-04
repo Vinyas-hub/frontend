@@ -12,10 +12,11 @@ function ViewBooking()
     const [bookingIdValidation,setsetBookingIdValidation]=useState()
     
 
-    return (<div>
-        <Paper elevation={4} style={{marginTop:"30px",width:"566px", marginLeft:"400px"}}>
-        <div style={{marginLeft:"150px"}}>
-            <h1>Booking view</h1>
+    return (<div class="container text-center">
+    <div class="row align-items-start ">
+    <div class="col-5 " style={{border: '2px solid black'}} >
+    <table class="table  table-bordered  ">
+            <h1>View Booking </h1>
 
             Enter SessionId <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{session_keyValidation}</p>
@@ -34,7 +35,7 @@ var Booking={
        
     
     }
-     let url='http://localhost:8090/booking/viewBooking/1?sessionKey='+session_key
+     let url='http://localhost:8090/booking/viewBooking/3?sessionKey='+session_key
     
       let headers={
         'Content-Type':'application/json'
@@ -64,38 +65,48 @@ var Booking={
                
             }}> Submit</Button> 
 
-<br/>
-            <br/>
-            <Card variant="outlined">
-            <div>
-            
-           <h4>Booking description</h4> {
-                response!=undefined?response.description:"   "
-            }
-                <br/>
-                <h4>Booking title</h4>      {
-                response!=undefined?response.bookingTitle:"   "
-            }
-            <br/>
-            <h4>Number of persons</h4>    
-             {
-                response!=undefined?response.noOfPersons:"   "
-            }
-            <br/>
-            <h4>Total Cost</h4>
-            {
-                response!=undefined?response.totalCost:"   "
-            }
-            
-            
-            
-
-            </div> <br/>
-            
-            </Card>
-        </div>
-        </Paper>
+</table>
+    </div>
+     <br/>
+   &nbsp; <div class="col-6" style={{border: '2px solid black'}}>
+    <br/>
+    <table class="table  table-bordered">
         
-    </div>);
+  <thead>
+    <tr>
+   
+      <th>Booking ID</th>
+      <th>Booking title</th>
+      <th>Booking Description</th>
+      <th>Number of persons</th>
+      <th>Total Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+            <tr>
+          <td>{  response!=undefined?response.bookingId:"   "}</td>
+          <td>{    response!=undefined?response.bookingTitle:"   "}</td>
+          {/* <td>{ response!=undefined?response.busNumber:"   "}</td> */}
+          <td>{ response!=undefined?response.description:"   "}</td>
+          <td>{response!=undefined?response.noOfPersons:"   "}</td>
+          <td>{  response!=undefined?response.totalCost:"   "}</td>
+          
+        </tr>
+       {/* (
+      <tr>
+        <td colSpan="2">No value found</td>
+      </tr>
+    ) */}
+  </tbody>
+</table>
+
+    </div>
+
+
+</div>
+    </div> 
+
+
+);
 }
 export default ViewBooking

@@ -44,13 +44,15 @@ function AddHotel()
         setSelectedOption1(event.target.value);
       }
 
-    return (<div>
-        <Paper elevation={4} style={{marginTop:"30px",width:"566px", marginLeft:"400px"}}>
-        <div style={{marginLeft:"150px"}}>
-            <h1>Add Hotel</h1>
-            Enter Session Key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
+    return (
+       <div class="container text-center">
+    <div class="row align-items-start ">
+    <div class="col-5 " style={{border: '2px solid black'}} >
+    <table class="table  table-bordered">
+        <br/>
+            Enter Your Session Key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{session_keyValidation}</p>
-        Enter HotelID <br/><Input type='text'  onChange={(e)=>{setHotelID(e.target.value)}} /> <br/>
+        Enter Your HotelID <br/><Input type='text'  onChange={(e)=>{setHotelID(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{hotelIdValidation}</p> 
         Enter Hotel Name <br/><Input type='text' onChange={(e)=>{setHotelName(e.target.value)}}  /> <br/>
         <p style={{color:"red"}}>{hotelNameValidation}</p> 
@@ -196,46 +198,44 @@ var Hotel={
                 }
 
             }}> Submit</Button> 
-            <Card variant="outlined">
-            <div>
-                
-             <h4>hotelDescription</h4>
-            {
-                response!=undefined?response.hotelDescription:"   "
-            }
-    
-             <br/>
-             <h4>hotelName</h4>
-            {
-                response!=undefined?response.hotelName:"   "
-            }
-    
-             <br/>
-             <h4>hotelRent</h4>
-            {
-                response!=undefined?response.hotelRent:"   "
-            }
-    
-             <br/>
-             <h4>hotelStatus</h4>
-            {
-                response!=undefined?response.hotelStatus:"   "
-            }
-    
-             <br/>
-             <h4>hotelType</h4>
-            {
-                response!=undefined?response.hotelType:"   "
-            }
-    
-             <br/>
-             
-            </div>
-            </Card>
-        </div>
-        </Paper>
+
+</table>
+    </div>
+     <br/>
+   &nbsp; <div class="col-6" style={{border: '2px solid black'}}>
+    <br/>
+    <table class="table  table-bordered">
         
-    </div>);
-    
+  <thead>
+    <tr>
+   
+      <th>hotelDescription</th>
+      <th>hotelName</th>
+      <th>hotelRent</th>
+      <th>hotelStatus</th>
+      <th>hotelType</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+          <td>{ response!=undefined?response.hotelDescription:"   "}</td>
+          <td>{  response!=undefined?response.hotelName:"   "}</td>
+          <td>{ response!=undefined?response.hotelRent:"   "}</td>
+          <td>{response!=undefined?response.hotelStatus:"   "}</td>
+          <td>{response!=undefined?response.hotelType:"   "}</td>
+        </tr>
+       {/* (
+      <tr>
+        <td colSpan="2">No value found</td>
+      </tr>
+    ) */}
+  </tbody>
+</table>
+
+    </div>
+    </div>
+    </div>
+
+            );
 }
 export default AddHotel
