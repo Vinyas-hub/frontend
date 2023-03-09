@@ -2,6 +2,7 @@ import { Input,Button,Paper, Card } from "@mui/material";
 import { useContext, useState } from "react";
 import { ProfileContext } from "../context/profilecontext";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 function UserLogin()
 {
     const [response,setResponse]=useState()
@@ -14,14 +15,17 @@ function UserLogin()
     const [passwordValidation,setPasswordValidation]=useState()
     const [userType,setUserType]=useState() 
     const [userTypeValidation,setUserTypeValidation]=useState()
+    const navigate = useNavigate();
+
+  
     const [navigationmesasge,setNavigationMessage]=useState()
     const handleOptionChange = (event) => {
         setSelectedOption(event.target.value);
       }
 
     return (<div>
-        <Paper elevation={4} style={{marginTop:"130px",width:"566px", marginLeft:"400px"}}>
-            <div style={{marginLeft:"150px"}}>
+        <Paper elevation={4} style={{marginTop:"130px",width:"566px", marginLeft:"400px",height:"505px", backgroundColor: "aliceblue"}}>
+            <div style={{marginLeft:"191px"}}>
             <br/>
             <h3>USER LOGIN</h3>
             <br/>
@@ -59,6 +63,11 @@ var Login={
     axios.post(url,Login,{headers}).then((e)=>{
          console.log(e.data)
          setResponse(e.data)        //to show that hook
+         alert('Login Sucessfully')
+         localStorage.setItem('session_key1',e.data.sessionKey)
+         localStorage.setItem('customerId',e.data.userId)
+         localStorage.setItem('customerType',e.data.userType)
+         navigate('/user/dashboard')
 
         }).catch((e)=>{
              console.log(e)
@@ -88,7 +97,7 @@ var Login={
 
             }}> login</Button>
             <br/>
-            <Card variant="outlined">
+            {/* <Card variant="outlined">
             <div>
             <h4>Session key</h4>
             {
@@ -103,7 +112,7 @@ var Login={
                 response!=undefined?response.timeStamp:"   "
             }
             </div>
-            </Card>
+            </Card> */}
             
              </div>
             

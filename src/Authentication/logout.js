@@ -17,19 +17,27 @@ function Logout()
             <div style={{marginLeft:"150px"}}>
 
             <h1>LOGOUT</h1>
-        Enter adminID <br/><Input type='text' onChange={(e)=>{setAdminID(e.target.value)}} /> <br/>
-        <p style={{color:"red"}}>{adminIDValidation}</p> 
+        {/* Enter adminID <br/><Input type='text' onChange={(e)=>{setAdminID(e.target.value)}} /> <br/>
+        <p style={{color:"red"}}>{adminIDValidation}</p>  */}
        
-        Enter userType <br/><Input type='text' onChange={(e)=>{setUserType(e.target.value)}} /> <br/>
-        <p style={{color:"red"}}>{userTypeValidation}</p> 
+        {/* Enter userType <br/><Input type='text' onChange={(e)=>{setUserType(e.target.value)}} /> <br/>
+        <p style={{color:"red"}}>{userTypeValidation}</p>  */}
         
               <Button style={{marginLeft:"50px"}} variant="outlined" onClick={()=>{
 
 var Logout={
-    adminID:adminID,
+    userId:adminID,
     userType:userType
         }
-        let url=' http://localhost:8090/user/logout'
+        let key1=localStorage.getItem('adminID')
+        let key2=localStorage.getItem('userType')
+        localStorage.removeItem('session_key')
+        localStorage.removeItem('adminID')
+        localStorage.removeItem('userType')
+        localStorage.clear()
+        let url=' http://localhost:8090/user/logout?userId='+key1+'&userType='+key2
+          alert('Login Sucessfully')
+        
         
       let headers={
         'Content-Type':'application/json'
@@ -41,24 +49,24 @@ var Logout={
         }).catch((e)=>{
              console.log(e)
             })
-                 if(adminID==undefined)
-                {
-                    setAdminIDValidation("user name is blank")
-                }
-                else
-                {
-                    setAdminIDValidation(" ")
-                }
+                //  if(adminID==undefined)
+                // {
+                //     setAdminIDValidation("user name is blank")
+                // }
+                // else
+                // {
+                //     setAdminIDValidation(" ")
+                // }
                 
 
-                if(userType==undefined)
-                {
-                    setUserTypeValidation("password is blank")
-                }
-                else
-                {
-                    setUserTypeValidation(" ")
-                }
+                // if(userType==undefined)
+                // {
+                //     setUserTypeValidation("password is blank")
+                // }
+                // else
+                // {
+                //     setUserTypeValidation(" ")
+                // }
                 if(response!=undefined&& response.userType=="ADMIN"){
                     window.location.href = '/user/dashboard';
                     

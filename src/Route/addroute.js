@@ -5,6 +5,7 @@ import axios from "axios";
 
 function RouteReg()
 {
+    const [message,setMessage]=useState()
     const [response,setResponse]=useState()
     const [session_key,setSession_key]=useState()
     const [session_keyValidation,setSession_keyValidation]=useState()
@@ -28,29 +29,34 @@ function RouteReg()
     return (
         <div class="container text-center">
     <div class="row align-items-start ">
-    <div class="col-5 " style={{border: '1px solid black'}} >
+    <div class="col-5 " style={{border: '2px solid black'}} >
     <table class="table  table-bordered">
         <br/>
-            <h1>Route Add</h1>
-            Enter Session key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
-        <p style={{color:"red"}}>{session_keyValidation}</p>
+            <h1>Add Route </h1>
+            {/* Enter Session key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
+        <p style={{color:"red"}}>{session_keyValidation}</p> */}
 
-        Enter routeId <br/><Input type='text'  onChange={(e)=>{setRouteId(e.target.value)}} /> <br/>
-        <p style={{color:"red"}}>{routeIdValidation}</p> 
+        {/* Enter Route Id <br/><Input type='text' value={routeId} inputProps={{"data-testid":"routeId"}} 
+         onChange={(e)=>{setRouteId(e.target.value)}} /> <br/>
+        <p style={{color:"red"}}>{routeIdValidation}</p>  */}
 
-        Enter routeFrom <br/><Input type='text' onChange={(e)=>{setRouteFrom(e.target.value)}}  /> <br/>
+        Enter Route From <br/><Input type='text' value={routeFrom} inputProps={{"data-testid":"routeFrom"}}
+         onChange={(e)=>{setRouteFrom(e.target.value)}}  /> <br/>
         <p style={{color:"red"}}>{routeFromValidation}</p> 
 
-        Enter routeTo   <br/><Input type='text' onChange={(e)=>{setRouteTo(e.target.value)}}    /> <br/>
+        Enter routeTo   <br/><Input type='text' value={routeTo} inputProps={{"data-testid":"routeTo"}}
+        onChange={(e)=>{setRouteTo(e.target.value)}}    /> <br/>
         <p style={{color:"red"}}>{routeTorValidation}</p> 
 
         {/* Enter time<br/><Input type='text' onChange={(e)=>{setTime(e.target.value)}}    /><br/>
         <p style={{color:"red"}}>{timeValidation}</p> */}
 
-        Enter pickupPoint<br/><Input type='text' onChange={(e)=>{setPickupPoint(e.target.value)}}   /> <br/>
+        Enter pickupPoint<br/><Input type='text' value={pickupPoint} inputProps={{"data-testid":"pickupPoint"}}
+        onChange={(e)=>{setPickupPoint(e.target.value)}}   /> <br/>
         <p style={{color:"red"}}>{pickupPointValidation}</p>
 
-        Enter Fare<br/><Input type='text' onChange={(e)=>{setFare(e.target.value)}}   /> <br/>
+        Enter Fare<br/><Input type='text' value={fare} inputProps={{"data-testid":"fare"}}
+        onChange={(e)=>{setFare(e.target.value)}}   /> <br/>
         <p style={{color:"red"}}>{fareValidation}</p>
 
         {/* Enter packageList<br/><Input type='text' onChange={(e)=>{setPackageList(e.target.value)}}   /> <br/>
@@ -59,7 +65,7 @@ function RouteReg()
         Enter busList<br/><Input type='text' onChange={(e)=>{setBusList(e.target.value)}}   /> <br/>
         <p style={{color:"red"}}>{fareValidation}</p> */}
 
-        <Button style={{marginLeft:"50px"}} variant="outlined" onClick={()=>{
+        <Button data-testid="addbtn" style={{marginLeft:"10px"}} variant="outlined" onClick={()=>{
 
 var Route={
     session_key:session_key,
@@ -73,7 +79,8 @@ var Route={
     // busList:busList
 
     }
-     let url='http://localhost:8090/Route/Register?sessionKey='+session_key
+    let key=localStorage.getItem('session_key')
+     let url='http://localhost:8090/Route/Register?sessionKey='+key
       let headers={
         'Content-Type':'application/json'
     }
@@ -81,22 +88,23 @@ var Route={
          console.log(e.data)
          setResponse(e.data)
         }).catch((e)=>{
+
              console.log(e)
             })
+            setMessage("route added")
+            // if(session_key==undefined)
+            //     {
+            //         setSession_keyValidation("session_key is blank")
+            //     }
 
-            if(session_key==undefined)
-                {
-                    setSession_keyValidation("session_key is blank")
-                }
-
-                 if(routeId==undefined)
-                {
-                    setRouteIdValidation("route ID is blank")
-                }
-                else
-                {
-                    setRouteIdValidation(" ")
-                }
+                //  if(routeId==undefined)
+                // {
+                //     setRouteIdValidation("route ID is blank")
+                // }
+                // else
+                // {
+                //     setRouteIdValidation(" ")
+                // }
 
 
                 if(routeFrom==undefined)
@@ -147,15 +155,15 @@ var Route={
                 }
 
             }}> Submit</Button> 
-
+<div data-testid="message"> {message} </div>
 </table>
     </div>
      <br/>
-   &nbsp; <div class="col-6" style={{border: '1px solid black'}}>
+   &nbsp; <div class="col-6" style={{border: '2px solid black'}}>
     <br/>
-    <table class="table  table-bordered">
+    <table class="table  table-bordered table-striped table-hover">
         
-  <thead>
+  <thead class="table-dark">
     <tr>
    
       <th>Route ID</th>

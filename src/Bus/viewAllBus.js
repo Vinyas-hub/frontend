@@ -5,6 +5,7 @@ import axios from "axios";
 
 function ViewAllBus()
 {
+  const [message,setMessage]=useState()
      const [response,setResponse]=useState()
     const [session_key,setSession_key]=useState()
     const [session_keyValidation,setSession_keyValidation]=useState()
@@ -17,17 +18,18 @@ function ViewAllBus()
     <div class="col-5 " style={{border: '1px solid black'}} >
     <table class="table  table-bordered">
         <br/>
-    <h1>View All Bus</h1>
+    <h3>View All Bus</h3>
                 <br/>
-                Enter Session Key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
-        <p style={{color:"red"}}>{session_keyValidation}</p>
+                {/* Enter Session Key <br/><Input type='text' value={session_key} inputProps={{"data-testid":"session_key"}} 
+                 onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
+        <p style={{color:"red"}}>{session_keyValidation}</p> */}
 
         {/* Enter BusId <br/><Input type='text'  onChange={(e)=>{setBusId(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{busIdValidation}</p>  */}
 
        
 
-        <Button style={{marginLeft:"50px"}} variant="outlined" onClick={()=>{
+        <Button  data-testid="addbtn" style={{marginLeft:"10px"}} variant="outlined" onClick={()=>{
 
 var Booking={
     session_key:session_key,
@@ -36,7 +38,8 @@ var Booking={
        
     
     }
-     let url='http://localhost:8090/Bus/GetAll?sessionKey='+session_key
+    let key=localStorage.getItem('session_key')
+     let url='http://localhost:8090/Bus/GetAll?sessionKey='+key
     
       let headers={
         'Content-Type':'application/json'
@@ -47,11 +50,11 @@ var Booking={
         }).catch((e)=>{
              console.log(e)
             })
-
-            if(session_key==undefined)
-                {
-                    setSession_keyValidation("session_key is blank")
-                }
+            setMessage("AllBus")
+            // if(session_key==undefined)
+            //     {
+            //         setSession_keyValidation("session_key is blank")
+            //     }
 
                 //  if(busId==undefined)
                 // {
@@ -65,16 +68,17 @@ var Booking={
 
                
             }}> Submit</Button> 
+            <div data-testid="message"> {message} </div>
             </table>
     </div>
      <br/>
    &nbsp; <div class="col-6" style={{border: '1px solid black'}}>
     <br/>
-    <table class="table  table-bordered">
+    <table class="table  table-bordered table-striped table-hover">
         
-  <thead>
+  <thead class="table-dark">
     <tr>
-    <th>Bus Id</th>
+    <th >Bus Id</th>
       <th>Bus Type</th>
       <th>Bus Number</th>
       <th>Capacity</th>

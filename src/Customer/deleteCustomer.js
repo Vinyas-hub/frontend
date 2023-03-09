@@ -16,8 +16,8 @@ function  DeleteCustomer()
         <div style={{marginLeft:"150px"}}>
             <h1> Delete Customer </h1>
 
-            Enter SessionId <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
-        <p style={{color:"red"}}>{session_keyValidation}</p>
+            {/* Enter SessionId <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
+        <p style={{color:"red"}}>{session_keyValidation}</p> */}
 
         Enter CustomerID <br/><Input type='text'  onChange={(e)=>{setCustomerID(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{customerIDValidation}</p> 
@@ -30,7 +30,8 @@ var Customer={
     customerID:customerID
     
     }
-     let url='http://localhost:8090/customers/deletecustomer/1?sessionKey='+session_key
+    let key=localStorage.getItem('session_key')
+     let url='http://localhost:8090/customers/deletecustomer/1?sessionKey='+key
       let headers={
         'Content-Type':'application/json'
     }
@@ -41,10 +42,10 @@ var Customer={
              setResponse(e.data)
             })
 
-            if(session_key==undefined)
-            {
-                setSession_keyValidation("session_key is blank")
-            }
+            // if(session_key==undefined)
+            // {
+            //     setSession_keyValidation("session_key is blank")
+            // }
 
                  if(customerID==undefined)
                 {

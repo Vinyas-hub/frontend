@@ -1,25 +1,30 @@
 import { render, screen, fireEvent } from '@testing-library/react';
+import React from 'react';
+
+import { ProfileContext } from '../context/profilecontext';
 import BusReg from '../Bus/addBus';
+import AddForm from '../viewcomponents/addform';
 
+describe('case 2', () => {
+  test("test 1",()=>{
+    
+      render(<BusReg/>)
+     
+      const busNumber=screen.getByTestId("busNumber")
+      const capacity=screen.getByTestId("capacity")
+      const availableSeat=screen.getByTestId("availableSeat")
+      const btn=screen.getByTestId("addbtn")
 
-describe('BusReg component', () => {
-  it('should display validation errors if required fields are empty on submit', () => {
-    render(<BusReg />);
+      fireEvent.change(busNumber,{target:{value:"ka18ec3456"}})
+      fireEvent.change(capacity,{target:{value:56}})
+      fireEvent.change(availableSeat,{target:{value:16}})
+      fireEvent.click(btn)
+      const message=screen.getByTestId("message")
 
-    // Find all form inputs
-    const sessionKeyInput = screen.getByLabelText(/Enter Session Key/i);
-    const busNumberInput = screen.getByLabelText(/Enter Bus Number/i);
-    const capacityInput = screen.getByLabelText(/Enter Capacity/i);
-    const availableSeatInput = screen.getByLabelText(/Enter Available Seat/i);
-    const submitButton = screen.getByRole('button', { name: /Submit/i });
+      expect(message.textContent).toBe(" bus added ")
+      
+     
 
-    // Click submit button
-    fireEvent.click(submitButton);
-
-    // Expect validation errors to be displayed
-    expect(screen.getByText(/session_key is blank/i)).toBeInTheDocument();
-    expect(screen.getByText(/bus Number is blank/i)).toBeInTheDocument();
-    expect(screen.getByText(/capacity is blank/i)).toBeInTheDocument();
-    expect(screen.getByText(/available seat blank/i)).toBeInTheDocument();
-  });
-});
+  })
+})
+   

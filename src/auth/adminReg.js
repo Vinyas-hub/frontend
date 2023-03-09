@@ -17,22 +17,24 @@ function AdminRegistration()
     const [mobile,setMobile]=useState()
     const [mobileValidation,setMobileValidation]=useState()
     return (<div>
-        <Paper elevation={4} style={{marginTop:"30px",width:"566px", marginLeft:"400px"}}>
-        <div style={{marginLeft:"150px"}}>
-            <h1>Admin Registration</h1>
-        Enter AdminID <br/><Input type='text'  onChange={(e)=>{setAdminID(e.target.value)}} /> <br/>
+        <Paper elevation={4} style={{marginTop:"130px",width:"566px", marginLeft:"493px",height:"505px", backgroundColor: "aliceblue"}}>
+        <div style={{marginLeft:"191px"}}>
+            <br/>
+            <h3>Admin Registration</h3>
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Enter AdminID <br/><Input type='text'  onChange={(e)=>{setAdminID(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{adminIDValidation}</p> 
 
-        Enter Admin Name <br/><Input type='text' onChange={(e)=>{setAdminName(e.target.value)}}  /> <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Enter Admin Name <br/><Input type='text' onChange={(e)=>{setAdminName(e.target.value)}}  /> <br/>
         <p style={{color:"red"}}>{adminNameValidation}</p> 
 
-        Enter Email <br/><Input type='text' onChange={(e)=>{setEmail(e.target.value)}}    /> <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter Email <br/><Input type='text' onChange={(e)=>{setEmail(e.target.value)}}    /> <br/>
         <p style={{color:"red"}}>{emailValidation}</p> 
 
-        Enter Password <br/><Input type='text' onChange={(e)=>{setPassword(e.target.value)}}    /><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter Password <br/><Input type='password' onChange={(e)=>{setPassword(e.target.value)}}    /><br/>
         <p style={{color:"red"}}>{passwordValidation}</p>
 
-        Enter Mobile<br/><Input type='text' onChange={(e)=>{setMobile(e.target.value)}}   /> <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enter Mobile<br/><Input type='text' onChange={(e)=>{setMobile(e.target.value)}}   /> <br/>
         <p style={{color:"red"}}>{mobileValidation}</p>
        
     <Button style={{marginLeft:"50px"}} variant="outlined" onClick={()=>{
@@ -111,7 +113,7 @@ axios.post(url,Admin,{headers}).then((e)=>{
                 }
                 window.location.href = '/login';
 
-            }}> Submit</Button> 
+            }}> SignUp</Button> 
             
         </div>
         </Paper>

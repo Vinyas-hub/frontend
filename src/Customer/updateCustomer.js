@@ -26,8 +26,8 @@ function UpdateCustomer()
         <Paper elevation={8} style={{marginTop:"30px",width:"566px", marginLeft:"400px"}}>
         <div style={{marginLeft:"150px"}}>
             <h1>update customer</h1>
-            Enter Session key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
-        <p style={{color:"red"}}>{session_keyValidation}</p>
+            {/* Enter Session key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
+        <p style={{color:"red"}}>{session_keyValidation}</p> */}
             
         Enter customer ID <br/><Input type='text'  onChange={(e)=>{setCustomerID(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{customerIDValidation}</p> 
@@ -59,7 +59,8 @@ var Customer={
     email:email,
      mobile:mobile
 }
-let url='http://localhost:8090/customers/updatecustomer?sessionKey='+session_key
+let key=localStorage.getItem('session_key')
+let url='http://localhost:8090/customers/updatecustomer?sessionKey='+key
 let headers={
     'Content-Type':'application/json'
 }
@@ -68,10 +69,10 @@ axios.put(url,Customer,{headers}).then((e)=>{
    }).catch((e)=>{
         console.log(e)
        })
-       if(session_key==undefined)
-       {
-           setSession_keyValidation("session_key is blank")
-       }
+    //    if(session_key==undefined)
+    //    {
+    //        setSession_keyValidation("session_key is blank")
+    //    }
                  if(customerID==undefined)
                 {
                     setCustomerIDValidation("customerID ID is blank")

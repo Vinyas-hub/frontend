@@ -7,7 +7,7 @@ import axios from "axios";
 function AddCustomer()
 {
     const [response,setResponse]=useState() //this is hook for getting that console info on frontend
-
+    const [message,setMessage]=useState()
     const [customerID,setCustomerID]=useState()
     const [customerIDValidation,setCustomerIDValidation]=useState()
     const [customerName,setCustomerName]=useState()
@@ -21,31 +21,38 @@ function AddCustomer()
     const [mobile,setMobile]=useState()
     const [mobileValidation,setMobileValidation]=useState()
     return (<div>
-        <Paper elevation={8} style={{marginTop:"30px",width:"566px", marginLeft:"400px"}}>
+        <Paper elevation={8} style={{marginTop:"130px",width:"566px", marginLeft:"493px",height:"585px", backgroundColor: "aliceblue"}}>
         <div style={{marginLeft:"150px"}}>
-            <h1>Register customer</h1>
+            <br/>
+            <h3>Register Customer</h3>
           
-            
-        Enter customer ID <br/><Input type='text'  onChange={(e)=>{setCustomerID(e.target.value)}} /> <br/>
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Enter Customer ID <br/><Input type='text' value={customerID} inputProps={{"data-testid":"customerID"}}
+         onChange={(e)=>{setCustomerID(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{customerIDValidation}</p> 
 
-        Enter customer Name <br/><Input type='text' onChange={(e)=>{setCustomerName(e.target.value)}}  /> <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;  Enter Customer Name <br/><Input type='text' value={customerName} inputProps={{"data-testid":"customerName"}}
+        onChange={(e)=>{setCustomerName(e.target.value)}}  /> <br/>
         <p style={{color:"red"}}>{customerNameValidation}</p> 
 
-        Enter  customerPassword <br/><Input type='text' onChange={(e)=>{setCustomerPassword(e.target.value)}}  /> <br/>
+        &nbsp;&nbsp;  Enter  Customer Password <br/><Input type='password' value={customerPassword} inputProps={{"data-testid":"customerPassword"}}
+        onChange={(e)=>{setCustomerPassword(e.target.value)}}  /> <br/>
         <p style={{color:"red"}}>{customerPasswordValidation}</p> 
-        Enter  address <br/><Input type='text' onChange={(e)=>{setAddress(e.target.value)}}  /> <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Enter Address <br/><Input type='text' value={address} inputProps={{"data-testid":"address"}}
+        onChange={(e)=>{setAddress(e.target.value)}}  /> <br/>
         <p style={{color:"red"}}>{addressValidation}</p> 
         
 
-        Enter Email <br/><Input type='text' onChange={(e)=>{setEmail(e.target.value)}}    /> <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Enter Email <br/><Input type='text' value={email} inputProps={{"data-testid":"email"}}
+         onChange={(e)=>{setEmail(e.target.value)}}    /> <br/>
         <p style={{color:"red"}}>{emailValidation}</p> 
 
        
-        Enter Mobile<br/><Input type='text' onChange={(e)=>{setMobile(e.target.value)}}   /> <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;   Enter Mobile<br/><Input type='text' value={mobile} inputProps={{"data-testid":"mobile"}}
+        onChange={(e)=>{setMobile(e.target.value)}}   /> <br/>
         <p style={{color:"red"}}>{mobileValidation}</p>
        
-    <Button style={{marginLeft:"50px"}} variant="outlined" onClick={()=>{
+    <Button data-testid="addbtn" style={{marginLeft:"50px"}} variant="outlined" onClick={()=>{
 
 var Customer={
    
@@ -65,7 +72,7 @@ axios.post(url,Customer,{headers}).then((e)=>{
    }).catch((e)=>{
         console.log(e)
        })
-
+       setMessage("customer")
                  if(customerID==undefined)
                 {
                     setCustomerIDValidation("customerID ID is blank")
@@ -129,8 +136,11 @@ axios.post(url,Customer,{headers}).then((e)=>{
                 {
                     setMobileValidation(" ")
                 }
+                
+
                 window.location.href = '/userlogin';
             }}> Submit</Button> 
+             <div data-testid="message"> {message} </div>
         </div>
         </Paper>
         

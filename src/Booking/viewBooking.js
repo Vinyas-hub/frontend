@@ -16,17 +16,17 @@ function ViewBooking()
     <div class="row align-items-start ">
     <div class="col-5 " style={{border: '2px solid black'}} >
     <table class="table  table-bordered  ">
-            <h1>View Booking </h1>
+            <h4>View Booking </h4>
 
-            Enter SessionId <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
-        <p style={{color:"red"}}>{session_keyValidation}</p>
+            {/* Enter SessionId <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
+        <p style={{color:"red"}}>{session_keyValidation}</p> */}
 
         Enter BookingID <br/><Input type='text'  onChange={(e)=>{setBookingId(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{bookingIdValidation}</p> 
 
        
 
-        <Button style={{marginLeft:"50px"}} variant="outlined" onClick={()=>{
+        <Button style={{marginLeft:"10px"}} variant="outlined" onClick={()=>{
 
 var Booking={
     session_key:session_key,
@@ -35,7 +35,8 @@ var Booking={
        
     
     }
-     let url='http://localhost:8090/booking/viewBooking/3?sessionKey='+session_key
+    let key=localStorage.getItem('session_key1')
+     let url='http://localhost:8090/booking/viewBooking/'+bookingId+'?sessionKey='+key
     
       let headers={
         'Content-Type':'application/json'
@@ -47,10 +48,10 @@ var Booking={
              console.log(e)
             })
 
-            if(session_key==undefined)
-                {
-                    setSession_keyValidation("session_key is blank")
-                }
+            // if(session_key==undefined)
+            //     {
+            //         setSession_keyValidation("session_key is blank")
+            //     }
 
                  if(bookingId==undefined)
                 {
@@ -70,9 +71,9 @@ var Booking={
      <br/>
    &nbsp; <div class="col-6" style={{border: '2px solid black'}}>
     <br/>
-    <table class="table  table-bordered">
+    <table class="table  table-bordered table-striped table-hover">
         
-  <thead>
+  <thead class="table-dark">
     <tr>
    
       <th>Booking ID</th>

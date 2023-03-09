@@ -22,8 +22,8 @@ function ViewFeedback()
         <div style={{marginLeft:"150px"}}>
             <h1>Feedback View</h1>
 
-            Enter SessionId <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
-        <p style={{color:"red"}}>{session_keyValidation}</p>
+            {/* Enter SessionId <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
+        <p style={{color:"red"}}>{session_keyValidation}</p> */}
 
         Enter feedbackID <br/><Input type='text'  onChange={(e)=>{setFeedbackId(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{feedbackIdValidation}</p> 
@@ -47,7 +47,8 @@ var Feedback={
     submitDate:submitDate
 
     }
-     let url='http://localhost:8090/feedbacks/feedbackid/2?sessionKey='+session_key
+    let key=localStorage.getItem('session_key')
+     let url='http://localhost:8090/feedbacks/feedbackid/2?sessionKey='+key
       let headers={
         'Content-Type':'application/json'
     }
@@ -56,10 +57,10 @@ var Feedback={
         }).catch((e)=>{
              console.log(e)
             })
-            if(session_key==undefined)
-            {
-                setSession_keyValidation("session_key is blank")
-            }
+            // if(session_key==undefined)
+            // {
+            //     setSession_keyValidation("session_key is blank")
+            // }
 
                  if(feedbackId==undefined)
                 {

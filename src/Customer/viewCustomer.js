@@ -11,15 +11,16 @@ function ViewCustomer()
     return (<div>
         <Paper elevation={8} style={{marginTop:"30px",width:"566px", marginLeft:"400px"}}>
         <div style={{marginLeft:"150px"}}>
-            <h1>customer View</h1>
-            Enter Session key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
-        <p style={{color:"red"}}>{session_keyValidation}</p>
+            <h3>Customer View</h3>
+            {/* Enter Session key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
+        <p style={{color:"red"}}>{session_keyValidation}</p> */}
         <Button style={{marginLeft:"50px"}} variant="outlined" onClick={()=>{
 
 var Customer={
 session_key:session_key
 }
-let url='http://localhost:8090/admin/2?sessionKey='+session_key
+let key=localStorage.getItem('session_key')
+let url='http://localhost:8090/admin/2?sessionKey='+key
 let headers={
 'Content-Type':'application/json'
 }
@@ -30,10 +31,10 @@ axios.get(url,Customer,{headers}).then((e)=>{
 }).catch((e)=>{
      console.log(e)
     })
-     if(session_key==undefined)
-        {
-            setSession_keyValidation("session_key is blank")
-        }
+    //  if(session_key==undefined)
+    //     {
+    //         setSession_keyValidation("session_key is blank")
+    //     }
     }}> Submit</Button> 
     </div>
     </Paper>

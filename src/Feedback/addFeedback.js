@@ -6,6 +6,7 @@ import { Feedback } from "@mui/icons-material";
 
 function AddFeedback()
 {   
+    const [message,setMessage]=useState()
     const [response,setResponse]=useState()
     const [session_key,setSession_key]=useState()
     const [session_keyValidation,setSession_keyValidation]=useState()
@@ -25,24 +26,29 @@ function AddFeedback()
     <table class="table  table-bordered  ">
             <h1>Add Feedback</h1>
 
-            Enter Session Key<br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
-        <p style={{color:"red"}}>{session_keyValidation}</p>
+            {/* Enter Session Key<br/><Input type='text'  inputProps={{"data-testid":"session_key"}}
+            onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
+        <p style={{color:"red"}}>{session_keyValidation}</p> */}
 
         
 
-        Enter feedback <br/><Input type='text' onChange={(e)=>{setFeedback(e.target.value)}}  /> <br/>
+        Enter feedback <br/><Input type='text' inputProps={{"data-testid":"feedback"}}
+        onChange={(e)=>{setFeedback(e.target.value)}}  /> <br/>
         <p style={{color:"red"}}>{feedbackValidation}</p> 
 
-        Enter rating   <br/><Input type='text' onChange={(e)=>{setRating(e.target.value)}}    /> <br/>
+        Enter rating   <br/><Input type='text' inputProps={{"data-testid":"rating"}}
+         onChange={(e)=>{setRating(e.target.value)}}    /> <br/>
         <p style={{color:"red"}}>{ratingValidation}</p> 
 
-        Enter bookingId <br/><Input type='text'  onChange={(e)=>{setBookingId(e.target.value)}} /> <br/>
+        Enter bookingId <br/><Input type='text' inputProps={{"data-testid":"bookingId"}}
+         onChange={(e)=>{setBookingId(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{bookingIdValidation}</p> 
 
-        Enter packageId   <br/><Input type='text' onChange={(e)=>{setPackageId(e.target.value)}}    /> <br/>
+        Enter packageId   <br/><Input type='text' inputProps={{"data-testid":"packageId"}}
+        onChange={(e)=>{setPackageId(e.target.value)}}    /> <br/>
         <p style={{color:"red"}}>{packageIdValidation}</p> 
 
-        <Button style={{marginLeft:"50px"}} variant="outlined" onClick={()=>{
+        <Button data-testid="addbtn" style={{marginLeft:"50px"}} variant="outlined" onClick={()=>{
 
 var Feedback={
     session_key:session_key,
@@ -52,7 +58,8 @@ var Feedback={
     packageId:packageId
 
     }
-     let url='http://localhost:8090/feedbacks/addfeedback?sessionKey='+session_key
+    let key=localStorage.getItem('session_key1')
+     let url='http://localhost:8090/feedbacks/addfeedback?sessionKey='+key
       let headers={
         'Content-Type':'application/json'
     }
@@ -62,10 +69,11 @@ var Feedback={
         }).catch((e)=>{
              console.log(e)
             })
-            if(session_key==undefined)
-            {
-                setSession_keyValidation("session_key is blank")
-            }
+            setMessage("Feedback added")
+            // if(session_key==undefined)
+            // {
+            //     setSession_keyValidation("session_key is blank")
+            // }
 
 
                 if(feedback==undefined)
@@ -111,7 +119,7 @@ var Feedback={
                 }
 
             }}> Submit</Button> 
-
+<div data-testid="message"> {message} </div>
 </table>
     </div>
      <br/>

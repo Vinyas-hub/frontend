@@ -4,8 +4,12 @@ import { ProfileContext } from "../context/profilecontext";
 import { Link, useNavigate } from "react-router-dom";
 import { render,screen ,fireEvent} from "@testing-library/react"
 import axios from "axios";
+
 function Login()
 {
+
+ 
+
     const navigate=useNavigate()
     const [response,setResponse]=useState()
     const [message,setMessage]=useState()
@@ -23,9 +27,11 @@ function Login()
         setSelectedOption(event.target.value);
       }
 
-    return (<div>
-        <Paper elevation={4} style={{marginTop:"130px",width:"566px", marginLeft:"400px"}}>
-            <div style={{marginLeft:"150px"}}>
+    return (<div  >
+        <Paper elevation={4} style={{marginTop:"130px",width:"566px", marginLeft:"493px",height:"505px", backgroundColor: "aliceblue"}}>
+
+            
+            <div style={{marginLeft:"191px"}}>
             <br/>
             <h3>ADMIN LOGIN</h3>
             
@@ -41,6 +47,7 @@ function Login()
       <br/>
       <br/>
       &nbsp; &nbsp; &nbsp;  <select id="userType" class="btn btn-primary dropdown-toggle" value={selectedOption} onChange={handleOptionChange}>
+      <option value="SELECT">SELECT</option>
         <option value="ADMIN">ADMIN</option>
         <option value="CUSTOMER">CUSTOMER</option>
         
@@ -66,8 +73,10 @@ var Login={
     axios.post(url,Login,{headers}).then((e)=>{
          console.log(e.data)
          setResponse(e.data)        //to show that hook
-         alert('sucess')
+         alert('Login Sucessfully')
          localStorage.setItem('session_key',e.data.sessionKey)
+         localStorage.setItem('adminID',e.data.userId)
+         localStorage.setItem('userType',e.data.userType)
         navigate('/admin/dashboard')
         }).catch((e)=>{
              console.log(e)
@@ -92,18 +101,19 @@ var Login={
 
                
                 if(response!=undefined&& response.userType=="ADMIN"){
-                window.location.href = '/admin/dashboard';
-                }
+                    
+                    window.location.href = '/admin/dashboard';
+                } 
                 
 
             }}> Login</Button> 
-            <Card variant="outlined">
+            {/* <Card variant="outlined">
             <div>
             <h4>Session key</h4>
             {/* {
                 response!=undefined?response.sessionKey:"   "
             }
-             */}
+             
             
 
              <br/>
@@ -113,7 +123,7 @@ var Login={
             }
             </div>
             <div data-testid="message">{message} </div>
-            </Card>
+            </Card> */}
             </div>
             {navigationmesasge}
             </Paper>

@@ -18,17 +18,18 @@ function ViewAdmin()
         <br/>
             <h4>View Customer </h4>
             <br/>
-            Enter Session key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
-        <p style={{color:"red"}}>{session_keyValidation}</p>
+            {/* Enter Session key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
+        <p style={{color:"red"}}>{session_keyValidation}</p> */}
         {/* Enter AdminId <br/><Input type='text'  onChange={(e)=>{setAdminId(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{adminIdValidation}</p> */}
-        <Button style={{marginLeft:"50px"}} variant="outlined" onClick={()=>{
+        <Button style={{marginLeft:"10px"}} variant="outlined" onClick={()=>{
         
 
 var Admin={
 session_key:session_key
 }
-let url='http://localhost:8090/customers/viewallcustomers?sessionKey='+session_key
+let key=localStorage.getItem('session_key')
+let url='http://localhost:8090/customers/viewallcustomers?sessionKey='+key
 let headers={
 'Content-Type':'application/json'
 }
@@ -39,10 +40,10 @@ axios.get(url,Admin,{headers}).then((e)=>{
 }).catch((e)=>{
      console.log(e)
     })
-     if(session_key==undefined)
-        {
-            setSession_keyValidation("session_key is blank")
-        }
+    //  if(session_key==undefined)
+    //     {
+    //         setSession_keyValidation("session_key is blank")
+    //     }
     //     if(adminId==undefined)
     //     {
     //         setadminIdValidation("adminId is blank")
@@ -57,8 +58,8 @@ axios.get(url,Admin,{headers}).then((e)=>{
      <br/>
    &nbsp; <div class="col-6" style={{border: '1px solid black'}}>
     <br/>
-    <table class="table  table-bordered">
-  <thead>
+    <table class="table  table-bordered table-striped table-hover">
+  <thead class="table-dark">
     <tr>
    
       <th>CustomerName</th>

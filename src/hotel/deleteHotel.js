@@ -18,8 +18,8 @@ function DeleteHotel()
         <Paper elevation={3} style={{marginTop:"30px",width:"566px", marginLeft:"400px"}}>
         <div style={{marginLeft:"150px"}}>
             <h1>delete Hotel</h1>
-            Enter SessionId <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
-        <p style={{color:"red"}}>{session_keyValidation}</p>
+            {/* Enter SessionId <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
+        <p style={{color:"red"}}>{session_keyValidation}</p> */}
         Enter HotelID <br/><Input type='text'  onChange={(e)=>{setHotelID(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{hotelIdValidation}</p> 
 
@@ -32,7 +32,8 @@ var Hotel={
 
 
     }
-     let url='http://localhost:8090/hotel/deleteHotel/1?sessionKey='+session_key
+    let key=localStorage.getItem('session_key')
+     let url='http://localhost:8090/hotel/deleteHotel/1?sessionKey='+key
       let headers={
         'Content-Type':'application/json'
     }
@@ -42,10 +43,10 @@ var Hotel={
         }).catch((e)=>{   
              console.log(e)
             })
-            if(session_key==undefined)
-            {
-                setSession_keyValidation("session_key is blank")
-            }
+            // if(session_key==undefined)
+            // {
+            //     setSession_keyValidation("session_key is blank")
+            // }
                  if(hotel_Id==undefined)
                 {
                     setHotelIDValidation("hotel ID is blank")

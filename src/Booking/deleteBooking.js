@@ -22,10 +22,10 @@ function DeleteBooking()
     return (<div>
         <Paper elevation={4} style={{marginTop:"30px",width:"566px", marginLeft:"400px"}}>
         <div style={{marginLeft:"150px"}}>
-            <h1>Booking view</h1>
+            <h3>Booking view</h3>
 
-            Enter SessionId <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
-        <p style={{color:"red"}}>{session_keyValidation}</p>
+            {/* Enter SessionId <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
+        <p style={{color:"red"}}>{session_keyValidation}</p> */}
 
         Enter BookingID <br/><Input type='text'  onChange={(e)=>{setBookingId(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{bookingIdValidation}</p> 
@@ -54,7 +54,8 @@ var Booking={
        
     
     }
-     let url='http://localhost:8090/booking/cancelBooking/1?sessionKey='+session_key
+    let key=localStorage.getItem('session_key')
+     let url='http://localhost:8090/booking/cancelBooking/1?sessionKey='+key
     
       let headers={
         'Content-Type':'application/json'
@@ -66,10 +67,10 @@ var Booking={
              console.log(e)
             })
 
-            if(session_key==undefined)
-                {
-                    setSession_keyValidation("session_key is blank")
-                }
+            // if(session_key==undefined)
+            //     {
+            //         setSession_keyValidation("session_key is blank")
+            //     }
 
                  if(bookingId==undefined)
                 {

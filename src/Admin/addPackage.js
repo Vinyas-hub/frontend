@@ -5,6 +5,7 @@ import axios from "axios";
 
 function PackageAdd()
 {
+    const [message,setMessage]=useState()
     const [response,setResponse]=useState()   
     const [session_key,setSession_key]=useState()
     const [session_keyValidation,setSession_keyValidation]=useState()
@@ -28,37 +29,45 @@ function PackageAdd()
     <div class="col-5 " style={{border: '2px solid black'}} >
     <table class="table  table-bordered">
         <br/>
-            <h2> Add Package</h2>
+            <h3> Add Package</h3>
             <br/>
             <br/>
 
-            Enter Session Id <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
-        <p style={{color:"red"}}>{session_keyValidation}</p>
+            {/* Enter Session Id <br/><Input type='text'   value={session_key} 
+            onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
+        <p style={{color:"red"}}>{session_keyValidation}</p> */}
 
-        Enter Package Name <br/><Input type='text'  onChange={(e)=>{setPackageName(e.target.value)}} /> <br/>
+        Enter Package Name <br/><Input type='text'  value={packageName} inputProps={{"data-testid":"packageName"}}
+         onChange={(e)=>{setPackageName(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{packageNameValidation}</p> 
 
-        Enter Package Description <br/><Input type='text' onChange={(e)=>{setPackageDescription(e.target.value)}}  /> <br/>
+        Enter Package Description <br/><Input type='text'  value={packageDescription} inputProps={{"data-testid":"packageDescription"}}
+        onChange={(e)=>{setPackageDescription(e.target.value)}}  /> <br/>
         <p style={{color:"red"}}>{packageDescriptionValidation}</p> 
 
-        Enter Route Id   <br/><Input type='text' onChange={(e)=>{setRouteId(e.target.value)}}    /> <br/>
+        Enter Route Id   <br/><Input type='text'  value={routeId} inputProps={{"data-testid":"routeId"}}
+        onChange={(e)=>{setRouteId(e.target.value)}}    /> <br/>
         <p style={{color:"red"}}>{routeIdValidation}</p> 
 
-        Enter  Hotel Id <br/><Input type='text' onChange={(e)=>{setHotel_Id(e.target.value)}}    /><br/>
+        Enter  Hotel Id <br/><Input type='text'  value={hotel_Id} inputProps={{"data-testid":"hotel_Id"}}
+        onChange={(e)=>{setHotel_Id(e.target.value)}}    /><br/>
         <p style={{color:"red"}}>{hotel_IdValidation}</p>
 
-        Enter  Bus Id<br/><Input type='text' onChange={(e)=>{setBusId(e.target.value)}}   /> <br/>
+        Enter  Bus Id<br/><Input type='text'  value={busId} inputProps={{"data-testid":"busId"}}
+        onChange={(e)=>{setBusId(e.target.value)}}   /> <br/>
         <p style={{color:"red"}}>{busIdValidation}</p>
 
-        Enter Package Cost <br/><Input type='text' onChange={(e)=>{setPackageCost(e.target.value)}}   /> <br/>
+        Enter Package Cost <br/><Input type='text'  value={packageCost} inputProps={{"data-testid":"packageCost"}}
+        onChange={(e)=>{setPackageCost(e.target.value)}}   /> <br/>
         <p style={{color:"red"}}>{packageCostValidation}</p>
 
-        Enter Package Capacity<br/><Input type='text' onChange={(e)=>{setPackageCapacity(e.target.value)}}   /> <br/>
+        Enter Package Capacity<br/><Input type='text'  value={packageCapacity} inputProps={{"data-testid":"packageCapacity"}}
+        onChange={(e)=>{setPackageCapacity(e.target.value)}}   /> <br/>
         <p style={{color:"red"}}>{packageCapacityValidation}</p>
 
     
        
-    <Button style={{marginLeft:"50px"}} variant="outlined" onClick={()=>{
+    <Button data-testid="addbtn" style={{marginLeft:"10px"}} variant="outlined" onClick={()=>{
 
 var Package={
     session_key:session_key,
@@ -72,7 +81,8 @@ var Package={
        
     
     }
-     let url='http://localhost:8090/package/addPackageByIds?sessionKey='+session_key
+    let key=localStorage.getItem('session_key')
+     let url='http://localhost:8090/package/addPackageByIds?sessionKey='+key
       let headers={
         'Content-Type':'application/json'
     }
@@ -82,11 +92,11 @@ var Package={
         }).catch((e)=>{
              console.log(e)
             })
-
-            if(session_key==undefined)
-                {
-                    setSession_keyValidation("session_key is blank")
-                }
+            setMessage("package added")
+            // if(session_key==undefined)
+            //     {
+            //         setSession_keyValidation("session_key is blank")
+            //     }
 
                  if(packageName==undefined)
                 {
@@ -163,21 +173,22 @@ var Package={
                 }
 
             }}> Submit</Button> 
+            <div data-testid="message"> {message} </div>
             <br/>
             </table>
     </div>
      <br/>
    &nbsp; <div class="col-6" style={{border: '2px solid black'}}>
     <br/>
-    <table class="table  table-bordered">
+    <table class="table  table-bordered table-striped table-hover">
         
-  <thead>
+  <thead class="table-dark"> 
     <tr>
-   
+    <th>Package Id</th>
       <th>Package Name</th>
       <th>Package Description</th>
-      <th>Package Id</th>
-      <th>Package Rating</th>
+    
+      {/* <th>Package Rating</th> */}
       <th>Package Cost</th>
       <th>Current Availability</th>
 
@@ -185,10 +196,11 @@ var Package={
   </thead>
   <tbody>
   <tr>
+         <td>{  response!=undefined?response.packageId:"   "}</td>
           <td>{response!=undefined?response.packageName:"   "}</td>
           <td>{  response!=undefined?response.packageDescription:"   "}</td>
-          <td>{  response!=undefined?response.packageId:"   "}</td>
-          <td>{ response!=undefined?response.packageRating:"   "}</td>
+         
+          {/* <td>{ response!=undefined?response.packageRating:"   "}</td> */}
           <td>{  response!=undefined?response.packageCost:"   "}</td>
           <td>{ response!=undefined?response.currentAvailability:"   "}</td>
         </tr>

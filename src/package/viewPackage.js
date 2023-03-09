@@ -11,6 +11,7 @@ function ViewAllPackage()
     // const [busId,setBusId]=useState()
     // const [busIdValidation,setBusIdValidation]=useState()
     
+    
 
     return (
        <div class="container text-center">
@@ -19,8 +20,8 @@ function ViewAllPackage()
     <table class="table  table-bordered  ">
             <h1>View Package </h1>
 
-            Enter Session Key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
-        <p style={{color:"red"}}>{session_keyValidation}</p>
+            {/* Enter Session Key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
+        <p style={{color:"red"}}>{session_keyValidation}</p> */}
 
         {/* Enter BusId <br/><Input type='text'  onChange={(e)=>{setBusId(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{busIdValidation}</p>  */}
@@ -36,7 +37,15 @@ var Package={
        
     
     }
-     let url='http://localhost:8090/package/viewAllPackages?sessionKey='+session_key
+    let ckey=''
+    if(localStorage.getItem('customerType')=='CUSTOMER'){
+       ckey=localStorage.getItem('session_key1')
+    }
+    else{
+      ckey=localStorage.getItem('session_key')
+    }
+   
+     let url='http://localhost:8090/package/viewAllPackages?sessionKey='+ckey
 
       let headers={
         'Content-Type':'application/json'
@@ -48,10 +57,10 @@ var Package={
              console.log(e)
             })
 
-            if(session_key==undefined)
-                {
-                    setSession_keyValidation("session_key is blank")
-                }
+            // if(session_key==undefined)
+            //     {
+            //         setSession_keyValidation("session_key is blank")
+            //     }
 
                 //  if(busId==undefined)
                 // {

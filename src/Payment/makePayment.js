@@ -6,6 +6,7 @@ import {  Payment } from "@mui/icons-material";
 
 function MakePayment()
 { 
+    const [message,setMessage]=useState()
     const [response,setResponse]=useState()
     const [session_key,setSession_key]=useState()
     const [session_keyValidation,setSession_keyValidation]=useState()
@@ -23,22 +24,25 @@ function MakePayment()
         <br/>
             <h4>Make payment</h4>
 
-            Enter Session key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
-        <p style={{color:"red"}}>{session_keyValidation}</p>
+            {/* Enter Session key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
+        <p style={{color:"red"}}>{session_keyValidation}</p> */}
 
         
 
-        Enter bookingId <br/><Input type='text' onChange={(e)=>{setBookingId(e.target.value)}}  /> <br/>
+        Enter bookingId <br/><Input type='text' value={bookingId} inputProps={{"data-testid":"bookingId"}} 
+         onChange={(e)=>{setBookingId(e.target.value)}}  /> <br/>
         <p style={{color:"red"}}>{bookingIdValidation}</p> 
 
-        Enter upi_Id   <br/><Input type='text' onChange={(e)=>{setUpi_Id(e.target.value)}}    /> <br/>
+        Enter upi_Id   <br/><Input type='text' value={upi_Id} inputProps={{"data-testid":"upi_Id"}} 
+        onChange={(e)=>{setUpi_Id(e.target.value)}}    /> <br/>
         <p style={{color:"red"}}>{upi_IdValidation}</p> 
 
-        Enter pin <br/><Input type='text'  onChange={(e)=>{setPin(e.target.value)}} /> <br/>
+        Enter pin <br/><Input type='text' value={pin} inputProps={{"data-testid":"pin"}} 
+         onChange={(e)=>{setPin(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{pinValidation}</p>
 
         
-        <Button style={{marginLeft:"50px"}} variant="outlined" onClick={()=>{
+        <Button data-testid="addbtn" style={{marginLeft:"50px"}} variant="outlined" onClick={()=>{
 
 var Payment={
     session_key:session_key,
@@ -46,7 +50,8 @@ var Payment={
     upi_Id:upi_Id,
     pin:pin
 }
-    let url='http://localhost:8090/payment/makePayment?sessionKey='+session_key
+let key=localStorage.getItem('session_key')
+    let url='http://localhost:8090/payment/makePayment?sessionKey='+key
     
     let headers={
         'Content-Type':'application/json'
@@ -59,11 +64,11 @@ var Payment={
              console.log(e)
             })
 
-
-    if(session_key==undefined)
-    {
-        setSession_keyValidation("session_key is blank")
-    }
+            setMessage("payment")
+    // if(session_key==undefined)
+    // {
+    //     setSession_keyValidation("session_key is blank")
+    // }
 
     if(bookingId==undefined)
     {
@@ -94,6 +99,7 @@ var Payment={
     }
 
 }}> Submit</Button> 
+<div data-testid="message"> {message} </div>
 <br/>
 <br/>
 <br/>
@@ -102,9 +108,9 @@ var Payment={
      <br/>
    &nbsp; <div class="col-10" style={{border: '2px solid black'}}>
     <br/>
-    <table class="table  table-bordered">
+    <table class="table  table-bordered table-striped table-hover">
         
-  <thead>
+  <thead >
     <tr>
    
       

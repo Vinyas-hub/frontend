@@ -28,7 +28,6 @@ import ViewBooking from './Booking/viewBooking';
 import ViewBus from './Bus/viewBus';
 import ViewAllBus from './Bus/viewAllBus';
 import AddFeedback from './Feedback/addFeedback';
-import ViewFeedback from './Admin/viewFeedback';
 import MakePayment from './Payment/makePayment';
 import ViewRoute from './Route/viewRoute';
 import Dashboard from './auth/Dashboard';
@@ -38,6 +37,11 @@ import UserLogin from './Authentication/userlogin';
 import AddCustomer from './Customer/addCustomer';
 import AddHotel from './Admin/addHotel';
 import RouteReg from './Route/addroute';
+import AddBooking from './Booking/addBooking';
+import ViewFeedback from './Feedback/viewFeedback';
+import ViewAllBooking from './Booking/viewAllBooking';
+
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -66,6 +70,10 @@ root.render(
            <Route path="viewHotel" element={<ViewHotel/>} /> 
            <Route path="addroute" element={<RouteReg />} /> 
            <Route path="viewRoute" element={<ViewRoute />} />      {/*    //Added at 1pm */}
+           <Route path="viewFeedback" element={<ViewFeedback />} />
+           <Route path="viewPackage" element={<ViewAllPackage />} />
+           <Route path="viewBooking" element={<ViewBooking />} />
+           <Route path="viewAllBooking" element={<ViewAllBooking />} />
            <Route path="logout" element={<Logout/>} /> 
         </Route>
 
@@ -74,10 +82,15 @@ root.render(
          <Route path="viewBooking" element={<ViewBooking />} />
        
           <Route path="addFeedback" element={<AddFeedback />} />
-          <Route path="viewFeedback" element={<ViewFeedback />} />
+  
           <Route path="makePayment" element={<MakePayment />} />
-          
+          <Route path="viewFeedback" element={<ViewFeedback />} />
           <Route path="viewPackage" element={<ViewAllPackage />} />
+          <Route path="viewBus" element={<ViewBus />} />
+          <Route path="viewHotel" element={<ViewHotel />} />
+          <Route path="viewRoute" element={<ViewRoute />} />
+          <Route path="addBooking" element={<AddBooking />} />
+          <Route path="viewAllBus" element={<ViewAllBus />} />
           
           </Route>
     </Routes>

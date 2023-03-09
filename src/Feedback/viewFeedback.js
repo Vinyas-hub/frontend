@@ -1,41 +1,48 @@
 import { Input,Button,Paper, Card } from "@mui/material";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { ProfileContext } from "../context/profilecontext";
 import axios from "axios";  
 import { Feedback } from "@mui/icons-material";
-const [session_key,setSession_key]=useState()
+import NavigationBar from "../components/NavigationBar";
+import React from "react";
 
+function ViewFeedback() {
+  const [message, setMessage] = useState([]);
 
-function ViewFeedback()
-{  
-    const[message,setMessage] = useState([]);
-    useEffect(()=>{
-       axios.get("http://localhost:8090/feedbacks/viewallfeedbacks").then((e)=>{
-               setMessage(e.data);
-    })
-           },[]);
-            return(
-                <div>
-                    <h4> Admin can see medicines list</h4>
-                    <table className="table" >
-                        <tr scope="row" >
-                            <th>Id</th>
-                             <th>Name</th>
-                             <th>STOCK</th>
-                             <th>PRICE</th>
-                              </tr>
-                              {message.map((e)=>{
-                                return (
-                                    <tr>
-                                       <td>{e.feedbackId}</td>
-                                        <td>{e.feedback}</td>
-                                        <td>{e.rating}</td>
-                                        <td>{e.submitDate}</td>
-                                         </tr> 
-                                          )
-                                          })} </table><NavigationBar/>
-                                           </div>
-                                            )
-                    
-                   }
-export default ViewFeedback
+  useEffect(() => {
+    axios.get("http://localhost:8090/feedbacks/viewallfeedbacks").then((e) => {
+      setMessage(e.data);
+    });
+  }, []);
+
+  return (
+    <div>
+      <h4>All  FeedBack</h4>
+      <table className="table  table-bordered table-striped table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>FeedbackId</th>
+            <th>Feedback</th>
+            <th>Rating</th>
+            <th>SubmitDate</th>
+          </tr>
+        </thead>
+        <tbody>
+          {message.map((e) => {
+            return (
+              <tr key={e.feedbackId}>
+               <td>{e.feedbackId}</td>
+                <td>{e.feedback}</td>
+                <td>{e.rating}</td>
+                <td>{e.submitDate}</td>
+              </tr> 
+            );
+          })}
+        </tbody>
+      </table>
+      <NavigationBar />
+    </div>
+  );
+}
+
+export default ViewFeedback;

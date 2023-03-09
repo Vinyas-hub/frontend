@@ -5,6 +5,7 @@ import axios from "axios";
 
 function UpdateAdmin()
 {
+    const [message,setMessage]=useState()
     const [response,setResponse]=useState()
     const [session_key,setSession_key]=useState()
     const [session_keyValidation,setSession_keyValidation]=useState()
@@ -24,30 +25,35 @@ function UpdateAdmin()
     <div class="col-5 " style={{border: '2px solid black'}} >
     <table class="table  table-bordered">
         <br/>
-            <h2>Admin Update</h2>
+            <h3>Admin Update</h3>
             <br/>
-            <br/>
-            Enter Session key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
-        <p style={{color:"red"}}>{session_keyValidation}</p>
+         
+            {/* Enter Session key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
+        <p style={{color:"red"}}>{session_keyValidation}</p> */}
 
-        Enter Your Admin ID <br/><Input type='text' onChange={(e)=>{setAdminID(e.target.value)}}  /> <br/>
+        Enter Your Admin ID <br/><Input type='text' 
+        onChange={(e)=>{setAdminID(e.target.value)}}  /> <br/>
         <p style={{color:"red"}}>{adminIDValidation}</p>
 
 
-        Enter Your Admin Name <br/><Input type='text' onChange={(e)=>{setAdminName(e.target.value)}}  /> <br/>
+        Enter Your Admin Name <br/><Input type='text' inputProps={{"data-testid":"adminName"}}
+         onChange={(e)=>{setAdminName(e.target.value)}}  /> <br/>
         <p style={{color:"red"}}>{adminNameValidation}</p> 
         
 
-        Enter Your Email <br/><Input type='text' onChange={(e)=>{setEmail(e.target.value)}}    /> <br/>
+        Enter Your Email <br/><Input type='text' inputProps={{"data-testid":"email"}}
+        onChange={(e)=>{setEmail(e.target.value)}}    /> <br/>
         <p style={{color:"red"}}>{emailValidation}</p> 
 
-        Enter Your Password <br/><Input type='text' onChange={(e)=>{setPassword(e.target.value)}}    /><br/>
+        Enter Your Password <br/><Input type='text' inputProps={{"data-testid":"password"}}
+        onChange={(e)=>{setPassword(e.target.value)}}    /><br/>
         <p style={{color:"red"}}>{passwordValidation}</p>
 
-        Enter Your Mobile<br/><Input type='text' onChange={(e)=>{setMobile(e.target.value)}}   /> <br/>
+        Enter Your Mobile<br/><Input type='text' inputProps={{"data-testid":"mobile"}}
+        onChange={(e)=>{setMobile(e.target.value)}}   /> <br/>
         <p style={{color:"red"}}>{mobileValidation}</p>
        
-        <Button style={{marginLeft:"50px"}} variant="outlined" onClick={()=>{
+        <Button data-testid="addbtn" style={{marginLeft:"10px"}} variant="outlined" onClick={()=>{
         
 
 var Admin={
@@ -59,7 +65,8 @@ var Admin={
                         mobile:mobile
                         
 }
-let url='http://localhost:8090/admin/updateAdmin?sessionKey='+session_key
+let key=localStorage.getItem('session_key')
+let url='http://localhost:8090/admin/updateAdmin?sessionKey='+key
 
 let headers={
 'Content-Type':'application/json'
@@ -71,10 +78,11 @@ axios.put(url,Admin,{headers}).then((e)=>{
 }).catch((e)=>{
      console.log(e)
     })
-     if(session_key==undefined)
-        {
-            setSession_keyValidation("session_key is blank")
-        }
+    setMessage("Admin updated")
+    //  if(session_key==undefined)
+    //     {
+    //         setSession_keyValidation("session_key is blank")
+    //     }
         if(adminID==undefined)
         {
             setAdminIDValidation("Admin ID is blank")
@@ -140,6 +148,7 @@ axios.put(url,Admin,{headers}).then((e)=>{
         }
     
     }}> Submit</Button> 
+      <div data-testid="message"> {message} </div>
      <br/>
      <br/>
 
@@ -148,9 +157,9 @@ axios.put(url,Admin,{headers}).then((e)=>{
      <br/>
    &nbsp; <div class="col-6" style={{border: '2px solid black'}}>
     <br/>
-    <table class="table  table-bordered">
+    <table class="table  table-bordered table-striped table-hover">
         
-  <thead>
+  <thead class="table-dark">
     <tr>
    
       <th>Bus Id</th>

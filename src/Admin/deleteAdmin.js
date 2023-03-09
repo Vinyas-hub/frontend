@@ -14,8 +14,8 @@ function DeleteAdmin()
         <Paper elevation={8} style={{marginTop:"30px",width:"566px", marginLeft:"400px"}}>
         <div style={{marginLeft:"150px"}}>
             <h1>Admin delete</h1>
-            Enter Session key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
-        <p style={{color:"red"}}>{session_keyValidation}</p>
+            {/* Enter Session key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
+        <p style={{color:"red"}}>{session_keyValidation}</p> */}
         Enter AdminId <br/><Input type='text'  onChange={(e)=>{setAdminId(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{adminIdValidation}</p>
         <Button style={{marginLeft:"50px"}} variant="outlined" onClick={()=>{
@@ -24,7 +24,8 @@ function DeleteAdmin()
 var Admin={
 session_key:session_key
 }
-let url='http://localhost:8090/admin?sessionKey='+session_key
+let key=localStorage.getItem('session_key')
+let url='http://localhost:8090/admin?sessionKey='+key
 let headers={
 'Content-Type':'application/json'
 }
@@ -35,10 +36,10 @@ axios.delete(url,Admin,{headers}).then((e)=>{
 }).catch((e)=>{
      console.log(e)
     })
-     if(session_key==undefined)
-        {
-            setSession_keyValidation("session_key is blank")
-        }
+    //  if(session_key==undefined)
+    //     {
+    //         setSession_keyValidation("session_key is blank")
+    //     }
         if(adminId==undefined)
         {
             setadminIdValidation("adminId is blank")

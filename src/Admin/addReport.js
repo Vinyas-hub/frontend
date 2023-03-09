@@ -6,6 +6,7 @@ import axios from "axios";
 
 function AddReport()
 {   
+    const [message,setMessage]=useState()
     const [session_key,setSession_key]=useState()
     const [session_keyValidation,setSession_keyValidation]=useState()
     const [reportID,setReportID]=useState()
@@ -18,22 +19,26 @@ function AddReport()
     return (<div>
         <Paper elevation={4} style={{marginTop:"30px",width:"566px", marginLeft:"400px"}}>
         <div style={{marginLeft:"150px"}}>
-            <h1>Report Add</h1>
+            <h3>Report Add</h3>
 
-            Enter SessionId <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
-        <p style={{color:"red"}}>{session_keyValidation}</p>
+            {/* Enter Session Key <br/><Input type='text'  inputProps={{"data-testid":"session_key"}}
+            onChange={(e)=>{setSession_key(e.target.value)}} /> <br/> */}
+        {/* <p style={{color:"red"}}>{session_keyValidation}</p> */}
 
-        Enter reportID <br/><Input type='text'  onChange={(e)=>{setReportID(e.target.value)}} /> <br/>
+        Enter reportID <br/><Input type='text' inputProps={{"data-testid":"reportID"}}
+         onChange={(e)=>{setReportID(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{reportIDValidation}</p> 
 
-        Enter Report Name <br/><Input type='text' onChange={(e)=>{setReportName(e.target.value)}}  /> <br/>
+        Enter Report Name <br/><Input type='text' inputProps={{"data-testid":"reportName"}}
+        onChange={(e)=>{setReportName(e.target.value)}}  /> <br/>
         <p style={{color:"red"}}>{reportNameValidation}</p> 
 
-        Enter reportType   <br/><Input type='text' onChange={(e)=>{setReportType(e.target.value)}}    /> <br/>
+        Enter reportType   <br/><Input type='text' inputProps={{"data-testid":"reportType"}}
+        onChange={(e)=>{setReportType(e.target.value)}}    /> <br/>
         <p style={{color:"red"}}>{reportTypeValidation}</p> 
 
 
-        <Button style={{marginLeft:"50px"}} variant="outlined" onClick={()=>{
+        <Button data-testid="addbtn" style={{marginLeft:"10px"}} variant="outlined" onClick={()=>{
 
 var Report={
     session_key:session_key,
@@ -42,19 +47,22 @@ var Report={
     reportType:reportType
 
     }
-     let url='http://localhost:8090/report/addReport?sessionKey='+session_key
+    let key=localStorage.getItem('session_key')
+     let url='http://localhost:8090/report/addReport?sessionKey='+key
       let headers={
         'Content-Type':'application/json'
     }
     axios.post(url,Report,{headers}).then((e)=>{
          console.log(e.data)
+         setMessage("report")
         }).catch((e)=>{
              console.log(e)
             })
-            if(session_key==undefined)
-            {
-                setSession_keyValidation("session_key is blank")
-            }
+           
+            // if(session_key==undefined)
+            // {
+            //     setSession_keyValidation("session_key is blank")
+            // }
 
                  if(reportID==undefined)
                 {
@@ -85,6 +93,7 @@ var Report={
                 }
 
             }}> Submit</Button> 
+            <div data-testid="message"> {message} </div>
         </div>
         </Paper>
         
