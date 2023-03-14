@@ -15,10 +15,10 @@ function ViewAllBus()
 
     return (<div class="container text-center">
     <div class="row align-items-start ">
-    <div class="col-5 " style={{border: '1px solid black'}} >
+    <div class="col-6 " style={{border: '1px solid black'}} >
     <table class="table  table-bordered">
         <br/>
-    <h3>View All Bus</h3>
+    {/* <h3>View All Bus</h3> */}
                 <br/>
                 {/* Enter Session Key <br/><Input type='text' value={session_key} inputProps={{"data-testid":"session_key"}} 
                  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
@@ -67,11 +67,12 @@ var Booking={
 
 
                
-            }}> Submit</Button> 
+            }}> View All Bus</Button> 
             <div data-testid="message"> {message} </div>
             </table>
     </div>
      <br/>
+     
    &nbsp; <div class="col-6" style={{border: '1px solid black'}}>
     <br/>
     <table class="table  table-bordered table-striped table-hover">

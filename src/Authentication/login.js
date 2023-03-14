@@ -77,9 +77,13 @@ var Login={
          localStorage.setItem('session_key',e.data.sessionKey)
          localStorage.setItem('adminID',e.data.userId)
          localStorage.setItem('userType',e.data.userType)
+         
         navigate('/admin/dashboard')
         }).catch((e)=>{
              console.log(e)
+             if (e.response.status != e.data) {
+                alert('Invalid password. Please try again.');
+             }
             })
 
               if(email==undefined)
@@ -97,9 +101,9 @@ var Login={
                 else
                 {
                     setPasswordValidation(" ")
+                
                 }
-
-               
+              
                 if(response!=undefined&& response.userType=="ADMIN"){
                     
                     window.location.href = '/admin/dashboard';

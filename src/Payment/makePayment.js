@@ -37,7 +37,7 @@ function MakePayment()
         onChange={(e)=>{setUpi_Id(e.target.value)}}    /> <br/>
         <p style={{color:"red"}}>{upi_IdValidation}</p> 
 
-        Enter pin <br/><Input type='text' value={pin} inputProps={{"data-testid":"pin"}} 
+        Enter pin <br/><Input type='password' value={pin} inputProps={{"data-testid":"pin"}} 
          onChange={(e)=>{setPin(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{pinValidation}</p>
 
@@ -117,12 +117,13 @@ let key=localStorage.getItem('session_key')
       <th>Booking Id</th>
       <th>Booking Date</th>
       <th>Booking Status</th>
+      <th>Booking Title</th>
       <th>Booking description</th>
       <th>Number Of Persons</th>
       <th>Total Cost</th>
       <th>Payment Amount</th>
       <th>Payment Information</th>
-      <th>Payment Status</th>
+      {/* <th>Payment Status</th> */}
     
     </tr>
   </thead>
@@ -137,7 +138,7 @@ let key=localStorage.getItem('session_key')
           <td>{     response!=undefined?response.booking.totalCost:"   "}</td>
           <td>{    response!=undefined?response.paymentAmount:"   "}</td>
           <td>{    response!=undefined?response.paymentInfo:"   "}</td>
-          <td>{     response!=undefined?response.paymentStatus:"   "}</td>
+          {/* <td>{     response!=undefined?response.paymentStatus:"   "}</td> */}
           
         </tr>
        {/* (

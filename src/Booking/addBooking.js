@@ -12,7 +12,8 @@ function AddBooking()
     const [session_keyValidation,setSession_keyValidation]=useState()
     const [packageId,setPackageId]=useState()
     const [packageIdValidation,setPackageIdValidation]=useState()
-    const [customerId,setCustomerId]=useState()
+    const customerId = localStorage.getItem('customerId');//we are getting the data from local storage
+
     const [customerIdValidation,setCustomerIdValidation]=useState()
     const [noOfPersons,setNoOfPersons]=useState()
     const [noOfPersonsValidation,setNoOfPersonsValidation]=useState()
@@ -36,11 +37,11 @@ function AddBooking()
          onChange={(e)=>{setPackageId(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{packageIdValidation}</p> 
 
-        Enter customerId <br/><Input type='text' value={customerId} inputProps={{"data-testid":"customerId"}}
+        {/* Enter customerId <br/><Input type='text' value={customerId} inputProps={{"data-testid":"customerId"}}
         onChange={(e)=>{setCustomerId(e.target.value)}}  /> <br/>
-        <p style={{color:"red"}}>{customerIdValidation}</p> 
+        <p style={{color:"red"}}>{customerIdValidation}</p>  */}
 
-        Enter noOfPersons   <br/><Input type='text' value={noOfPersons} inputProps={{"data-testid":"noOfPersons"}}
+        Enter No Of Persons   <br/><Input type='text' value={noOfPersons} inputProps={{"data-testid":"noOfPersons"}}
         onChange={(e)=>{setNoOfPersons(e.target.value)}}    /> <br/>
         <p style={{color:"red"}}>{noOfPersonsValidation}</p> 
 
@@ -72,6 +73,7 @@ var Booking={
     axios.post(url,Booking,{headers}).then((e)=>{
          console.log(e.data)
          setResponse(e.data)        //to show that hook
+         localStorage.setItem('customerId',e.data.customerId) //setting the customerId from local storage
         }).catch((e)=>{
              console.log(e)
             })
@@ -83,7 +85,7 @@ var Booking={
 
                  if(packageId==undefined)
                 {
-                    setPackageIdValidation("booking ID is blank")
+                    setPackageIdValidation("Package ID is blank")
                 }
                 else
                 {
@@ -91,21 +93,21 @@ var Booking={
                 }
 
 
-                if(customerId==undefined)
-                {
-                    setCustomerIdValidation("Description is blank")
-                }
-                else
-                {
-                    setCustomerIdValidation(" ")
-                }
+                // if(customerId==undefined)
+                // {
+                //     setCustomerIdValidation("Description is blank")
+                // }
+                // else
+                // {
+                //     setCustomerIdValidation(" ")
+                // }
                
                 
 
 
                 if(noOfPersons==undefined)
                 {
-                    setNoOfPersonsValidation("booking title is blank")
+                    setNoOfPersonsValidation("No of Persons is blank")
                 }
                 else
                 {

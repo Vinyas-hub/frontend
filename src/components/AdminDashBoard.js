@@ -12,6 +12,7 @@ function AdminDashboard(){
         <div className="row" style={{marginTop:"60px"}}>
             <LeftSideMenu />
             <div className="col-md-10" style={{backgroundColor:"aliceblue"}} >
+                
                 <Outlet />
             </div>
         </div>

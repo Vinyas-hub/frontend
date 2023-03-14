@@ -39,6 +39,7 @@ function UserLogin()
       <br/>
       <br/>
       &nbsp; &nbsp; &nbsp; <select id="userType" class="btn btn-primary dropdown-toggle" value={selectedOption} onChange={handleOptionChange}>
+        
         <option value="ADMIN">ADMIN</option>
         <option value="CUSTOMER">CUSTOMER</option>
         
@@ -71,6 +72,9 @@ var Login={
 
         }).catch((e)=>{
              console.log(e)
+             if (e.response.status != e.data) {
+                alert('Invalid Email and Password. Please try again.');
+             }
             })
 
               if(email==undefined)
@@ -95,7 +99,7 @@ var Login={
                     window.location.href = '/user/dashboard';
                     }
 
-            }}> login</Button>
+            }}> LOGIN</Button>
             <br/>
             {/* <Card variant="outlined">
             <div>

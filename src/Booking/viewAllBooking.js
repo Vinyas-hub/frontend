@@ -15,8 +15,9 @@ function ViewAllBooking()
     return (<div class="container text-center">
     <div class="row align-items-start ">
     <div class="col-5 " style={{border: '2px solid black'}} >
+      <br/>
     <table class="table  table-bordered  ">
-            <h4>View All Booking </h4>
+            {/* <h4>View All Booking </h4> */}
 
             {/* Enter SessionId <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{session_keyValidation}</p> */}
@@ -63,7 +64,7 @@ var Booking={
 
 
                
-            }}> Submit</Button> 
+            }}> View All Booking</Button> 
 
 </table>
     </div>

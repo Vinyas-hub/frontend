@@ -6,6 +6,7 @@ import axios from "axios";
 
 function AdminRegistration()
 {
+    const [message,setMessage]=useState()
     const [adminID,setAdminID]=useState()
     const [adminIDValidation,setAdminIDValidation]=useState()
     const [adminName,setAdminName]=useState()
@@ -22,22 +23,26 @@ function AdminRegistration()
             <br/>
             <h3>Admin Registration</h3>
             <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Enter AdminID <br/><Input type='text'  onChange={(e)=>{setAdminID(e.target.value)}} /> <br/>
-        <p style={{color:"red"}}>{adminIDValidation}</p> 
+            {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Enter AdminID <br/><Input type='text'  onChange={(e)=>{setAdminID(e.target.value)}} /> <br/>
+        <p style={{color:"red"}}>{adminIDValidation}</p>  */}
 
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Enter Admin Name <br/><Input type='text' onChange={(e)=>{setAdminName(e.target.value)}}  /> <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Enter Admin Name <br/><Input type='text' value={adminName} inputProps={{"data-testid":"adminName"}}
+        onChange={(e)=>{setAdminName(e.target.value)}}  /> <br/>
         <p style={{color:"red"}}>{adminNameValidation}</p> 
 
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter Email <br/><Input type='text' onChange={(e)=>{setEmail(e.target.value)}}    /> <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter Email <br/><Input type='text' value={email} inputProps={{"data-testid":"email"}}
+        onChange={(e)=>{setEmail(e.target.value)}}    /> <br/>
         <p style={{color:"red"}}>{emailValidation}</p> 
 
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter Password <br/><Input type='password' onChange={(e)=>{setPassword(e.target.value)}}    /><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter Password <br/><Input type='password' value={password} inputProps={{"data-testid":"password"}}
+        onChange={(e)=>{setPassword(e.target.value)}}    /><br/>
         <p style={{color:"red"}}>{passwordValidation}</p>
 
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enter Mobile<br/><Input type='text' onChange={(e)=>{setMobile(e.target.value)}}   /> <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enter Mobile<br/><Input type='text' value={mobile} inputProps={{"data-testid":"mobile"}}
+        onChange={(e)=>{setMobile(e.target.value)}}   /> <br/>
         <p style={{color:"red"}}>{mobileValidation}</p>
        
-    <Button style={{marginLeft:"50px"}} variant="outlined" onClick={()=>{
+    <Button data-testid="addbtn"  style={{marginLeft:"50px"}} variant="outlined" onClick={()=>{
 
 var Admin={
                         adminID:adminID,
@@ -52,15 +57,17 @@ let headers={
 }
 axios.post(url,Admin,{headers}).then((e)=>{
     console.log(e.data)
+    
    }).catch((e)=>{
         console.log(e)
        })
+       setMessage(" ")
 
 
-                 if(adminID==undefined)
-                {
-                    setAdminIDValidation("Admin ID is blank")
-                }
+                //  if(adminID==undefined)
+                // {
+                //     setAdminIDValidation("Admin ID is blank")
+                // }
                 // else if(adminID.length)
                 // {
                 //     setAdminIDValidation("Admin ID  less then 3")
@@ -111,9 +118,13 @@ axios.post(url,Admin,{headers}).then((e)=>{
                 {
                     setMobileValidation(" ")
                 }
+                alert('Registration done Sucessfully')
+                
                 window.location.href = '/login';
 
-            }}> SignUp</Button> 
+            }}> Register</Button> 
+             <div data-testid="message"> {message} </div> 
+             <br/>
             
         </div>
         </Paper>

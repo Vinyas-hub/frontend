@@ -147,7 +147,7 @@ axios.put(url,Admin,{headers}).then((e)=>{
             setMobileValidation(" ")
         }
     
-    }}> Submit</Button> 
+    }}> Update</Button> 
       <div data-testid="message"> {message} </div>
      <br/>
      <br/>
@@ -162,17 +162,17 @@ axios.put(url,Admin,{headers}).then((e)=>{
   <thead class="table-dark">
     <tr>
    
-      <th>Bus Id</th>
-      <th>Bus Type</th>
-      <th>Bus Number</th>
-      <th>Capacity</th>
-      <th>Availabe Seat</th>
+      {/* <th>Admin Id</th> */}
+      <th>Admin Name</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Mobile</th>
 
     </tr>
   </thead>
   <tbody>
   <tr>
-          <td>{  response!=undefined?response.adminID:"   "}</td>
+          {/* <td>{  response!=undefined?response.adminID:"   "}</td> */}
           <td>{ response!=undefined?response.adminName:"   "}</td>
           <td>{  response!=undefined?response.email:"   "}</td>
           <td>{response!=undefined?response.password:"   "}</td>

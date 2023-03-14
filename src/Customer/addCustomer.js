@@ -27,9 +27,9 @@ function AddCustomer()
             <h3>Register Customer</h3>
           
             <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Enter Customer ID <br/><Input type='text' value={customerID} inputProps={{"data-testid":"customerID"}}
+            {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Enter Customer ID <br/><Input type='text' value={customerID} inputProps={{"data-testid":"customerID"}}
          onChange={(e)=>{setCustomerID(e.target.value)}} /> <br/>
-        <p style={{color:"red"}}>{customerIDValidation}</p> 
+        <p style={{color:"red"}}>{customerIDValidation}</p>  */}
 
         &nbsp;&nbsp;&nbsp;&nbsp;  Enter Customer Name <br/><Input type='text' value={customerName} inputProps={{"data-testid":"customerName"}}
         onChange={(e)=>{setCustomerName(e.target.value)}}  /> <br/>
@@ -73,10 +73,10 @@ axios.post(url,Customer,{headers}).then((e)=>{
         console.log(e)
        })
        setMessage("customer")
-                 if(customerID==undefined)
-                {
-                    setCustomerIDValidation("customerID ID is blank")
-                }
+                //  if(customerID==undefined)
+                // {
+                //     setCustomerIDValidation("customerID ID is blank")
+                // }
                 // else if(adminID.length)
                 // {
                 //     setAdminIDValidation("Admin ID  less then 3")
@@ -137,9 +137,9 @@ axios.post(url,Customer,{headers}).then((e)=>{
                     setMobileValidation(" ")
                 }
                 
-
+                alert('Registration done Sucessfully')
                 window.location.href = '/userlogin';
-            }}> Submit</Button> 
+            }}> Register</Button> 
              <div data-testid="message"> {message} </div>
         </div>
         </Paper>

@@ -50,22 +50,13 @@ const [adminID,setAdminID]=useState()
                 <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}>
                      <img src={hotel} width="25px" height="25px"/> &nbsp; Add Hotel </li> 
             </Link>
-            <Link to="/admin/dashboard/addPackage" className="nav-link">
+            <Link to="/admin/dashboard/viewHotel" className="nav-link">
                 <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}>
-                      <img src={travel} width="25px" height="25px"/> 
-                     &nbsp; Add Package </li>
-            </Link> 
-            <Link to="/admin/dashboard/updateAdmin" className="nav-link">
-                <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}> 
-                    <img src={update} width="25px" height="25px"/> &nbsp; update Admin 
-                    </li>
-            </Link> 
-            <Link to="/admin/dashboard/viewAdmin" className="nav-link">
-                <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}>
-                     <img src={viewcustomer} width="25px" height="25px"/>  
-                    &nbsp; View Customer</li>
+                     <img src={locationhotel} width="25px" height="25px"/>  
+                    &nbsp; View Hotel</li>
             </Link>
-           
+
+                
            <Link to="/admin/dashboard/addroute" className="nav-link">
              <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}>
                     <img src={addroute} width="25px" height="25px"/>   
@@ -77,16 +68,20 @@ const [adminID,setAdminID]=useState()
                  &nbsp; view Route</li>
             </Link>
 
-            <Link to="/admin/dashboard/viewHotel" className="nav-link">
+            <Link to="/admin/dashboard/addPackage" className="nav-link">
                 <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}>
-                     <img src={locationhotel} width="25px" height="25px"/>  
-                    &nbsp; View Hotel</li>
-            </Link>
-
+                      <img src={travel} width="25px" height="25px"/> 
+                     &nbsp; Add Package </li>
+            </Link> 
             <Link to="/admin/dashboard/viewPackage" className="nav-link">
                 <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}>
                      <img src={travel} width="25px" height="25px"/>  
                     &nbsp; View Package</li>
+            </Link>
+            <Link to="/admin/dashboard/viewAllBooking" className="nav-link">
+                <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}>
+                     <img src={viewdata} width="25px" height="25px"/>  
+                    &nbsp; View All Booking</li>
             </Link>
 
             <Link to="/admin/dashboard/viewFeedback" className="nav-link">
@@ -95,17 +90,27 @@ const [adminID,setAdminID]=useState()
                     &nbsp; View Feedback</li>
             </Link>
 
-            <Link to="/admin/dashboard/viewBooking" className="nav-link">
+            <Link to="/admin/dashboard/viewAdmin" className="nav-link">
+                <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}>
+                     <img src={viewcustomer} width="25px" height="25px"/>  
+                    &nbsp; View Customer</li>
+            </Link>
+
+
+           
+
+            {/* <Link to="/admin/dashboard/viewBooking" className="nav-link">
                 <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}>
                      <img src={viewdata} width="25px" height="25px"/>  
                     &nbsp; View Booking</li>
-            </Link>
+            </Link> */}
 
-            <Link to="/admin/dashboard/viewAllBooking" className="nav-link">
-                <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}>
-                     <img src={viewdata} width="25px" height="25px"/>  
-                    &nbsp; View All Booking</li>
-            </Link>
+           
+            <Link to="/admin/dashboard/updateAdmin" className="nav-link">
+                <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}> 
+                    <img src={update} width="25px" height="25px"/> &nbsp; Update Admin 
+                    </li>
+            </Link> 
 
 
             <Button  >

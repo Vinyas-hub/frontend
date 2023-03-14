@@ -13,10 +13,10 @@ function ViewAdmin()
     return (<div>
         <div class="container text-center">
     <div class="row align-items-start ">
-    <div class="col-5 " style={{border: '1px solid black'}} >
+    <div class="col-5 " style={{border: '2px solid black'}} >
     <table class="table  table-bordered">
-        <br/>
-            <h4>View Customer </h4>
+        
+            {/* <h4>View Customer </h4> */}
             <br/>
             {/* Enter Session key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{session_keyValidation}</p> */}
@@ -52,11 +52,11 @@ axios.get(url,Admin,{headers}).then((e)=>{
     //     {
     //         setadminIdValidation(" ")
     //     }
-    }}> Submit</Button> 
+    }}> View Customer</Button> 
  </table>
     </div>
      <br/>
-   &nbsp; <div class="col-6" style={{border: '1px solid black'}}>
+   &nbsp; <div class="col-6" style={{border: '2px solid black'}}>
     <br/>
     <table class="table  table-bordered table-striped table-hover">
   <thead class="table-dark">

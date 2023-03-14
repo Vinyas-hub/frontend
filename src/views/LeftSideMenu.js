@@ -48,49 +48,62 @@ function LeftSideMenu(){
                     &nbsp; View Booking</li>
                
             </Link>
-             
-            <Link to="/user/dashboard/addFeedback" className="nav-link">
-                <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}>
-                     <img src={feedback} width="25px" height="25px"/>  
-                &nbsp; AddFeedback </li>
-            </Link>
-            <Link to="/user/dashboard/viewFeedback" className="nav-link">
-                <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}>
-                    <img src={search} width="25px" height="25px"/> 
-                 &nbsp; viewFeedback</li>
-            </Link>
-            <Link to="/user/dashboard/makePayment" className="nav-link">
-                <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}>
-                     <img src={money} width="25px" height="25px"/>  
-                &nbsp; MakePayment</li>
-            </Link>
-            
-            <Link to="/user/dashboard/viewPackage" className="nav-link">
-                <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}>
-                     <img src={travel} width="25px" height="25px"/> 
-                 &nbsp; View Package</li>
-            </Link>
+
             <Link to="/user/dashboard/viewBus" className="nav-link">
                 <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}>
-                    <img src={pay} width="25px" height="25px"/> 
+                    <img src={newbus} width="25px" height="25px"/> 
                  &nbsp; View Bus</li>
             </Link>
+             
+            <Link to="/user/dashboard/viewAllBus" className="nav-link">
+                <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}>
+                     <img src={busstop} width="25px" height="25px"/> 
+                 &nbsp; View All Bus</li>
+            </Link>
+
             <Link to="/user/dashboard/viewHotel" className="nav-link">
                 <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}>
                      <img src={locationhotel} width="25px" height="25px"/> 
                  &nbsp; View Hotel</li>
             </Link>
+
             <Link to="/user/dashboard/viewRoute" className="nav-link">
                 <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}>
                      <img src={addroute} width="25px" height="25px"/> 
                  &nbsp; View Route</li>
             </Link>
 
-            <Link to="/user/dashboard/viewAllBus" className="nav-link">
+            <Link to="/user/dashboard/viewPackage" className="nav-link">
                 <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}>
-                     <img src={busstop} width="25px" height="25px"/> 
-                 &nbsp; View All Bus</li>
+                     <img src={travel} width="25px" height="25px"/> 
+                 &nbsp; View Package</li>
             </Link>
+
+            <Link to="/user/dashboard/makePayment" className="nav-link">
+                <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}>
+                     <img src={money} width="25px" height="25px"/>  
+                &nbsp; Make Payment</li>
+            </Link>
+
+
+
+            <Link to="/user/dashboard/addFeedback" className="nav-link">
+                <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}>
+                     <img src={feedback} width="25px" height="25px"/>  
+                &nbsp; Add Feedback </li>
+            </Link>
+            <Link to="/user/dashboard/viewFeedback" className="nav-link">
+                <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}>
+                    <img src={search} width="25px" height="25px"/> 
+                 &nbsp; View Feedback</li>
+            </Link>
+           
+            
+                      
+           
+            
+
+            
 {/* 
             <Link to="/user/dashboard/viewBooking" className="nav-link">
                 <li class="list-group-item" style={{backgroundColor:"antiquewhite"}}>

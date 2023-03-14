@@ -7,7 +7,7 @@ describe('case 2', () => {
         render(<AddBooking/>)
      //  const session_key=screen.getByTestId("session_key")
         const packageId=screen.getByTestId("packageId")
-        const customerId=screen.getByTestId("customerId")
+     //   const customerId=screen.getByTestId("customerId")
         const noOfPersons=screen.getByTestId("noOfPersons")
         
         const btn=screen.getByTestId("addbtn")
@@ -15,7 +15,7 @@ describe('case 2', () => {
 
    //     fireEvent.change(session_key,{target:{value:"h1rNkz"}})
         fireEvent.change(packageId,{target:{value:1}})
-        fireEvent.change(customerId,{target:{value:2}})
+     //   fireEvent.change(customerId,{target:{value:2}})
         fireEvent.change(noOfPersons,{target:{value:10}})
         
         fireEvent.click(btn)

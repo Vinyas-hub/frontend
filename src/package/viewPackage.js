@@ -18,7 +18,8 @@ function ViewAllPackage()
     <div class="row align-items-start ">
     <div class="col-5 " style={{border: '2px solid black'}} >
     <table class="table  table-bordered  ">
-            <h1>View Package </h1>
+      <br/>
+            {/* <h1>View Package </h1> */}
 
             {/* Enter Session Key <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
         <p style={{color:"red"}}>{session_keyValidation}</p> */}
@@ -39,7 +40,7 @@ var Package={
     }
     let ckey=''
     if(localStorage.getItem('customerType')=='CUSTOMER'){
-       ckey=localStorage.getItem('session_key1')
+       ckey=localStorage.getItem('session_key')
     }
     else{
       ckey=localStorage.getItem('session_key')
@@ -73,7 +74,7 @@ var Package={
 
 
                
-            }}> Submit</Button> 
+            }}> View Package</Button> 
            </table>
     </div>
      <br/>

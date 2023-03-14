@@ -16,6 +16,7 @@ function ViewBooking()
     <div class="row align-items-start ">
     <div class="col-5 " style={{border: '2px solid black'}} >
     <table class="table  table-bordered  ">
+      <br/>
             <h4>View Booking </h4>
 
             {/* Enter SessionId <br/><Input type='text'  onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
@@ -64,7 +65,7 @@ var Booking={
 
 
                
-            }}> Submit</Button> 
+            }}> View Booking</Button> 
 
 </table>
     </div>

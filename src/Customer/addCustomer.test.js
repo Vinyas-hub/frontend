@@ -6,7 +6,7 @@ describe('case 2', () => {
     test("test 7",()=>{
         
         render(<AddCustomer/>)
-     const customerID=screen.getByTestId("customerID")
+   //  const customerID=screen.getByTestId("customerID")
         const customerName=screen.getByTestId("customerName")
         const customerPassword=screen.getByTestId("customerPassword")
         const address=screen.getByTestId("address")
@@ -16,7 +16,7 @@ describe('case 2', () => {
         const btn=screen.getByTestId("addbtn")
 
 
-      fireEvent.change(customerID,{target:{value:1}})
+    //  fireEvent.change(customerID,{target:{value:1}})
         fireEvent.change(customerName,{target:{value:"vinyas"}})
         fireEvent.change(customerPassword,{target:{value:1234}})
         fireEvent.change(address,{target:{value:"updupi"}})

@@ -18,7 +18,7 @@ function ViewBus()
     <div class="col-5 " style={{border: '1px solid black'}} >
     <table class="table  table-bordered">
         <br/>
-    <h3>View Bus</h3>
+    {/* <h3>View Bus</h3> */}
                 <br/>
                 {/* Enter Your Session Key <br/><Input type='text'  value={session_key} inputProps={{"data-testid":"session_key"}} 
                 onChange={(e)=>{setSession_key(e.target.value)}} /> <br/>
@@ -68,7 +68,7 @@ var Booking={
 
 
                
-            }}> Submit</Button> 
+            }}>View Bus</Button> 
                 <div data-testid="message"> {message} </div>
           </table>
     </div>

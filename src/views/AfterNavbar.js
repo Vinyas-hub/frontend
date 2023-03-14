@@ -2,7 +2,7 @@ function AfterNavbar(){
     return(
         <div>
         <nav class="navbar fixed-top navbar-expand-lg bg-danger navbar-dark ">
-        <div class="container-fluid">
+        <div class="container-fluid" style={{width:"auto",fontSize:"20px"}}>
         <a class="navbar-brand" href="/HomeImg">Tour and Travels</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
